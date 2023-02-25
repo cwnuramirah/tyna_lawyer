@@ -11,8 +11,8 @@ const Navbar = () => {
 				<a href="/">🧩 Tetuan Taufiq</a>
 			</div>
 			<nav>
-				<div className={expanded ? "nav-expanded" : ""}>
-					<button id="nav-toggle" onClick={onToggle}>M</button>
+				<div className={expanded ? "nav-menu" : ""}>
+					<button id="nav-btn" onClick={onToggle}>M</button>
 				</div>
 				<ul className={expanded ? "nav-list-expanded" : "nav-list"}>
 					<li><a href="/">About</a></li>

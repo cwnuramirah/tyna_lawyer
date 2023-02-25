@@ -2,9 +2,14 @@ $white: var(--rgb-white);
 $black: var(--rgb-black);
 $grey: var(--rgb-grey);
 $navbar-height: 96px;
+$navbar-padding: 1rem 3rem;
+
+main {
+	margin-top: $navbar-height;
+}
 
 .navbar {
-	padding: 1rem 4rem;
+	padding: $navbar-padding;
 	height: $navbar-height;
 	position: fixed;
 	top: 0;
@@ -33,28 +38,30 @@ $navbar-height: 96px;
 	position: absolute;
 }
 
-#nav-toggle {
+#nav-btn {
 	display: none;
 }
 
 @media screen and (max-width: 768px) {
-	#nav-toggle {
+	#nav-btn {
 		display: block;
 	}
 
-	.nav-expanded {
+	.nav-menu {
 		position: absolute;
 		right: 0;
 		left: 0;
 		top: 0;
 		width: 100vw;
-		height: $navbar-height;
-		padding: 1rem 4rem;
 		background-color: $white;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: flex-end;
+
+		// to keep position of menu btn same
+			height: $navbar-height;
+			padding: $navbar-padding;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: flex-end;
 	}
 
 	.nav-list {
@@ -72,7 +79,7 @@ $navbar-height: 96px;
 			background-color: $white;
 			display: flex;
 			flex-direction: column;
-			gap: 2rem;
+			gap: 3rem;
 			padding-top: 2rem;
 		}
 	}
