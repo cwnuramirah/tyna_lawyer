@@ -1,0 +1,14 @@
+.btn {
+	padding: 1rem 1.5rem;
+    display: inline-flex;
+	position: relative;
+    white-space: nowrap;
+    line-height: 1;
+	cursor: pointer;
+	
+	&-primary {
+		background-color: var(--rgb-black);
+		color: var(--rgb-white);
+		text-decoration: none;
+	}
+}

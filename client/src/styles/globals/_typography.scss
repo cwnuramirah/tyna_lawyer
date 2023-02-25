@@ -1,0 +1,53 @@
+// size
+$txt-xs : 0.75rem; // p 12
+$txt-sm : 0.875rem; // p 14
+$txt-base : 1rem; // p 16
+$txt-lg : 1.25rem; // h4 20
+$txt-xl : 1.5rem; //h4 24
+$txt-2xl : 1.75rem; //h3 28
+$txt-3xl : 2.25rem; //h2 36
+$txt-4xl : 3.25rem; //h1 44
+
+// weight
+
+h1 {
+	font-size: $txt-4xl;
+	font-weight: 500;
+}
+
+h2 {
+	font-size: $txt-3xl;
+	font-weight: 500;
+}
+
+h3 {
+	font-size: $txt-2xl;
+}
+
+h4 {
+	font-size: $txt-xl;
+}
+
+h5 {
+	font-size: $txt-lg;
+}
+
+p {
+	margin-top: 0;
+	font-size: $txt-base;
+}
+
+a {
+	text-decoration: none;
+	color: var(--black);
+
+	&:visited {
+		color: var(--black);
+	}
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+  }
