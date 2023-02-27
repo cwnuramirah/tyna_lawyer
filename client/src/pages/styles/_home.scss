@@ -1,3 +1,33 @@
-.hero {
-	margin-left: 3rem;
+@import '../../styles/globals/breakpoints';
+
+@mixin two-col-left {
+	display: grid;
+	grid-template-columns: 1fr 5fr;
+	margin-bottom: 3rem;
+	padding-right: 7vw;
+	width: 100%;
+}
+
+.vertical-margin-xl {
+	margin: 0 16vw;
+
+	@media screen and (max-width: #{$breakpoint-sm}px) {
+		margin: 8vw;
+	}
+}
+
+.about-items {
+	@include two-col-left();
+
+	h4 {
+		padding-right: 2.5rem
+	}
+}
+
+.expertise-list {
+	@include two-col-left();
+
+	@media screen and (max-width: #{$breakpoint-sm}px) {
+		padding-right: 0;
+	}
 }

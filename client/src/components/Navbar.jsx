@@ -6,7 +6,7 @@ const Navbar = () => {
 	const onToggle = () => setExpanded(!expanded)
 
 	return (
-		<section className="navbar">
+		<header className="navbar">
 			<div className="brand">
 				<a href="/">🧩 Tetuan Taufiq</a>
 			</div>
@@ -29,7 +29,7 @@ const Navbar = () => {
 					<li><button className='btn btn-primary'>Contact Us</button></li>
 				</ul>
 			</nav>
-		</section>
+		</header>
 	)
 }
 

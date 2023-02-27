@@ -1,40 +1,42 @@
-// size
-$txt-xs : 0.75rem; // p 12
-$txt-sm : 0.875rem; // p 14
-$txt-base : 1rem; // p 16
-$txt-lg : 1.25rem; // h4 20
-$txt-xl : 1.5rem; //h4 24
-$txt-2xl : 1.75rem; //h3 28
-$txt-3xl : 2.25rem; //h2 36
-$txt-4xl : 3.25rem; //h1 44
+@import './breakpoints';
 
-// weight
+@mixin fluid-type($font-min, $font-max) {
+	// Min value
+	font-size: #{$font-min}px;
 
-h1 {
-	font-size: $txt-4xl;
-	font-weight: 500;
+	// Preferred value between the minimum and maximum bound
+	@media only screen and (min-width: #{$breakpoint-sm}px) {
+		font-size: calc(#{$font-min}px + #{($font-max - $font-min)} * (100vw - #{$breakpoint-sm}px) / (#{$breakpoint-lg} - #{$breakpoint-sm}));
+	}
+
+	// Max value
+	@media only screen and (min-width: #{$breakpoint-lg}px) {
+		font-size: #{$font-max}px;
+	}
 }
 
-h2 {
-	font-size: $txt-3xl;
-	font-weight: 500;
+h1, .text--2xl {
+    @include fluid-type(36, 44);
 }
 
-h3 {
-	font-size: $txt-2xl;
+h2, .text--xl {
+    @include fluid-type(28, 36);
 }
 
-h4 {
-	font-size: $txt-xl;
+h3, .text--lg {
+    @include fluid-type(24, 28);
 }
 
-h5 {
-	font-size: $txt-lg;
+h4, .text--md {
+    @include fluid-type(20, 24);
 }
 
-p {
-	margin-top: 0;
-	font-size: $txt-base;
+html, body, p, .text--sm {
+    @include fluid-type(14, 16);
+}
+
+.text--xs, small {
+    @include fluid-type(12, 14);
 }
 
 a {
@@ -50,4 +52,4 @@ ul {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
-  }
+}

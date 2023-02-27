@@ -10,3 +10,12 @@
 	--rgb-grey: rgba(var(--raw-grey),1);
 
 }
+$raw-white: 240, 241, 243;
+$raw-black: 15, 20, 26;
+$raw-grey: 92, 89, 86;
+$rgb-white: rgba(var($raw-white),1);
+$rgb-black: rgba(var($raw-black),1);
+$rgb-grey: rgba(var(--raw-grey),1);
+$success-color: #28a745;
+$warning-color: #ffc107;
+$error-color: #dc3545;
