@@ -15,8 +15,14 @@
 	}
 }
 
+h1, h2, h3, h4, p {
+	margin: 0;
+	line-height: 1.2;
+}
+
 h1, .text--2xl {
-    @include fluid-type(36, 44);
+    @include fluid-type(36, 56);
+	margin-bottom: 2rem;
 }
 
 h2, .text--xl {
@@ -37,6 +43,10 @@ html, body, p, .text--sm {
 
 .text--xs, small {
     @include fluid-type(12, 14);
+}
+
+.text--long {
+	line-height: 1.7;
 }
 
 a {

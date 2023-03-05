@@ -1,8 +1,12 @@
+:root {
+	--navbar-height: 96px;
+}
+
 $white: var(--rgb-white);
 $black: var(--rgb-black);
 $grey: var(--rgb-grey);
-$navbar-height: 96px;
-$navbar-padding: 1rem 3rem;
+$navbar-height: var(--navbar-height);
+$navbar-padding: 1rem 6rem;
 
 main {
 	margin-top: $navbar-height;
@@ -23,6 +27,7 @@ main {
 	align-items: center;
 	background-color: rgba(var(--raw-white), 0.8);
 	backdrop-filter: blur(5px);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .nav-list,
@@ -31,11 +36,26 @@ main {
 	flex-direction: row;
 	align-items: center;
 	gap: 2rem;
-}
 
-.nav-dropdown {
-	display: none;
-	position: absolute;
+	li>a {
+		display: inline-block;
+		position: relative;
+
+		&::before {
+			content: "";
+			position: absolute;
+			left: 0;
+			bottom: -3px;
+			width: 0;
+			height: 1px;
+			background-color: $black;
+			transition: width 0.3s ease-in-out;
+		}
+
+		&:hover::before {
+			width: 100%;
+		}
+	}
 }
 
 #nav-btn {
@@ -56,12 +76,12 @@ main {
 		background-color: $white;
 
 		// to keep position of menu btn same
-			height: $navbar-height;
-			padding: $navbar-padding;
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: flex-end;
+		height: $navbar-height;
+		padding: $navbar-padding;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-end;
 	}
 
 	.nav-list {
