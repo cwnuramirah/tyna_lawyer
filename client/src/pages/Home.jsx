@@ -25,14 +25,14 @@ const statsData = [
 		'counting': true,
 		'label': 'satisfied clients',
 	},
-];
+]
 
 const expertiseData = [
 	{
 		'id': '01',
-		'category': 'Corporate & Commercial',
+		'practice': 'Corporate & Commercial',
 		'description': 'From mergers and acquisitions to shareholders\' agreements, our commercially savvy legal team has the expertise to help you make informed decisions and protect your business interests.',
-		'tags': [
+		'subpractice': [
 			'Fundraising',
 			'Employee Share Incentive Plans',
 			'Shareholder\'s Agreement',
@@ -42,9 +42,9 @@ const expertiseData = [
 	},
 	{
 		'id': '02',
-		'category': 'Employment & Industrial Relations',
+		'practice': 'Employment & Industrial Relations',
 		'description': 'Whether you\'re an employer or employee, our skilled lawyers can provide practical advice and guidance on vast aspects of employment law, from compliance to termination, and help you navigate the legal complexities of industrial relations to achieve a positive outcome.',
-		'tags': [
+		'subpractice': [
 			'Fundraising',
 			'Employee Share Incentive Plans',
 			'Shareholder\'s Agreement',
@@ -54,9 +54,9 @@ const expertiseData = [
 	},
 	{
 		'id': '03',
-		'category': 'Dispute Resolution',
+		'practice': 'Dispute Resolution',
 		'description': 'Our lawyers are experienced in alternative dispute resolution methods such as arbitration (both domestic and international) and can assist you in settlement negotiations.',
-		'tags': [
+		'subpractice': [
 			'Fundraising',
 			'Employee Share Incentive Plans',
 			'Shareholder\'s Agreement',
@@ -66,9 +66,9 @@ const expertiseData = [
 	},
 	{
 		'id': '04',
-		'category': 'Startups & VCs',
+		'practice': 'Startups & VCs',
 		'description': 'Our lawyers will guide startups and venture capitalists through the complex legal requirements of fundraising, shareholder agreements, and growth plans to set you up for long-term success.',
-		'tags': [
+		'subpractice': [
 			'Fundraising',
 			'Employee Share Incentive Plans',
 			'Shareholder\'s Agreement',
@@ -78,15 +78,33 @@ const expertiseData = [
 	},
 	{
 		'id': '05',
-		'category': 'Property & Tax',
+		'practice': 'Property & Tax',
 		'description': 'Our lawyers are well-versed in property transactions and can help you navigate the complex legal landscape of buying, selling, and renting property. We can also help you save on RPGT and stamp duty wherever legally possible.',
-		'tags': [
+		'subpractice': [
 			'Fundraising',
 			'Employee Share Incentive Plans',
 			'Shareholder\'s Agreement',
 			'Setting Up Business In Malaysia',
 			'Other Agreements (Drafting/Reviewing)'
 		]
+	},
+]
+
+const teamData = [
+	{
+		'name': 'Taufiq Yong',
+		'imgUrl': '/assets/team/team-01.jpg',
+		'title': 'Corporate & Commercial, Startups and Venture Companies',
+	},
+	{
+		'name': 'Malik Imtiyaz',
+		'imgUrl': '/assets/team/team-02.jpg',
+		'title': 'Employment Law & Dispute Resolution',
+	},
+	{
+		'name': 'Logan Sabapathy',
+		'imgUrl': '/assets/team/team-03.jpg',
+		'title': 'Corporate & Commercial, Property & Tax',
 	},
 ]
 
@@ -105,10 +123,10 @@ const Home = () => {
 	const expertise = expertiseData.map((item, index) => (
 		<li key={index} className='expertise--list'>
 			<h3 className='expertise--list_no'>{index + 1}.</h3>
-			<h3 className='expertise--list_category'>{item['category']}</h3>
+			<h3 className='expertise--list_practice'>{item['practice']}</h3>
 			<ul className='expertise--list_tags'>
 				{
-					item['tags'].map((item, index) => (
+					item['subpractice'].map((item, index) => (
 						<li>
 							<a href={'/contact/' + item} key={index}>{item}</a>
 						</li>
@@ -118,10 +136,19 @@ const Home = () => {
 			<div className='expertise--list_desc '>
 
 				<p className='text--long'>{item['description']}</p>
-				<a href={'/' + item['category']} className='btn btn-primary'>Learn More</a>
+				<a href={'/' + item['practice']} className='btn btn-primary'>Learn More</a>
 			</div>
 		</li>
 	));
+
+	const team = teamData.map((item, index) => (
+		<li key={index} className='team--list'>
+			<figure>
+				<img src={item['imgUrl']} alt={item['name'] + ', ' + item['title'] + 'at Taufiq Yong & Associates'} />
+				<figcaption><strong>{item['name']}</strong><br /> {item['title']}</figcaption>
+			</figure>
+		</li>
+	))
 
 	return (
 		<main>
@@ -167,7 +194,11 @@ const Home = () => {
 				</ul>
 			</section>
 			<section className='team'>
-				<h1 className='team--header'>Years of experience and top knowledge</h1>
+				<h1 className='team--header'>Years of experience and top knowledge combined.</h1>
+				<ul className='team--body'>
+					{team}
+				</ul>
+				<button className='btn btn-primary'>Meet Our Team</button>
 			</section>
 		</main>
 	)

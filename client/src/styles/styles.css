@@ -251,15 +251,71 @@ main {
     padding-top: 2rem;
   }
 }
+footer {
+  background-color: var(--rgb-black);
+  color: var(--rgb-white);
+  padding: 8vw;
+  display: grid;
+  grid-template-columns: 12vw 12vw 24vw 12vw;
+  gap: 8vw;
+}
+footer h4 {
+  font-weight: 400 !important;
+  font-style: normal !important;
+}
+footer > div p {
+  opacity: 0.7;
+  margin-bottom: 3rem;
+}
+@media screen and (max-width: 1200px) {
+  footer > div p {
+    margin-bottom: 1rem;
+  }
+}
+footer > div ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+footer > div ul li {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+}
+footer > div ul li h4 {
+  cursor: pointer;
+}
+footer > div ul li svg {
+  width: 0;
+  transition: width 5s ease-in;
+}
+footer > div ul li #activeOffice {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+@media screen and (max-width: 1200px) {
+  footer {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+}
+@media screen and (max-width: 768px) {
+  footer {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 .hero {
   height: calc(100vh - var(--navbar-height));
-  padding: 0 6rem;
+  padding: 0 8vw;
   display: grid;
   grid-template: "a c" "b c";
   grid-template-columns: 1.15fr 0.85fr;
   grid-template-rows: 1.15fr 0.85fr;
   -moz-column-gap: 6rem;
        column-gap: 6rem;
+  overflow-x: clip;
 }
 .hero--header {
   grid-area: a;
@@ -278,13 +334,33 @@ main {
 }
 .hero--img {
   grid-area: c;
-  width: 110%;
+  min-width: 100%;
+  max-width: 120%;
+  aspect-ratio: 1;
   height: auto;
-  place-self: end end;
+  place-self: end center;
+}
+@media screen and (max-width: 1200px) {
+  .hero {
+    padding-top: 8vw;
+    height: auto;
+    grid-template: "a a" "b c";
+    grid-template-columns: 1fr 1fr;
+  }
+  .hero--label {
+    grid-area: b;
+    place-self: center start;
+    text-align: left;
+  }
+  .hero--img {
+    grid-area: c;
+    width: 150%;
+    height: auto;
+  }
 }
 
 .stats {
-  padding: 6rem;
+  padding: 8vw;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
@@ -303,9 +379,19 @@ main {
   gap: 1rem;
   line-height: 1;
 }
+.stats > ul > li > div > h1 {
+  margin-bottom: 0 !important;
+}
+@media screen and (max-width: 922px) {
+  .stats > ul {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 3rem;
+  }
+}
 
 .intro {
-  padding: 6rem;
+  padding: 8vw;
   display: grid;
   grid-template: "a ." ". b";
   gap: 6rem;
@@ -320,12 +406,28 @@ main {
   text-align: justify;
   text-justify: inter-word;
 }
+@media screen and (max-width: 1200px) {
+  .intro {
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+  }
+  .intro > h2 {
+    width: 100vw;
+  }
+}
 
 .expertise {
-  padding: 6rem;
+  padding: 8vw;
 }
 .expertise--header {
   width: 60%;
+  margin-bottom: 5rem;
+}
+@media screen and (max-width: 1200px) {
+  .expertise--header {
+    width: 100%;
+  }
 }
 .expertise--list {
   display: grid;
@@ -368,10 +470,67 @@ main {
   width: max-content;
   align-self: self-end;
 }
+@media screen and (max-width: 1200px) {
+  .expertise--list {
+    grid-template: "no	category" ".	tags" ". desc";
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto;
+  }
+  .expertise--list_desc > p {
+    display: none;
+  }
+  .expertise--list_desc a {
+    width: -moz-max-content;
+    width: max-content;
+    align-self: self-end;
+  }
+}
+@media screen and (max-width: 922px) {
+  .expertise--list {
+    -moz-column-gap: 1rem;
+         column-gap: 1rem;
+    row-gap: 1rem;
+    padding: 3rem 1rem;
+  }
+}
 
 .team {
-  padding: 6rem;
+  padding: 8vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 .team--header {
   width: 60%;
+  margin-bottom: 5rem;
+}
+@media screen and (max-width: 1200px) {
+  .team--header {
+    width: 100%;
+  }
+}
+.team--body {
+  overflow: hidden;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(22vw, 1fr));
+  gap: 3rem;
+  margin-bottom: 5rem;
+}
+.team--list img {
+  width: 100%;
+  border: 1px solid var(--rgb-black);
+  margin-bottom: 1rem;
+}
+@media screen and (max-width: 992px) {
+  .team--body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+  .team--list img {
+    width: 70%;
+  }
 }/*# sourceMappingURL=styles.css.map */
