@@ -1,4 +1,5 @@
-import React from 'react'
+import { useState, useEffect } from "react"
+import client from "../client"
 
 const statsData = [
 	{
@@ -27,68 +28,68 @@ const statsData = [
 	},
 ]
 
-const expertiseData = [
-	{
-		'id': '01',
-		'practice': 'Corporate & Commercial',
-		'description': 'From mergers and acquisitions to shareholders\' agreements, our commercially savvy legal team has the expertise to help you make informed decisions and protect your business interests.',
-		'subpractice': [
-			'Fundraising',
-			'Employee Share Incentive Plans',
-			'Shareholder\'s Agreement',
-			'Setting Up Business In Malaysia',
-			'Other Agreements (Drafting/Reviewing)'
-		]
-	},
-	{
-		'id': '02',
-		'practice': 'Employment & Industrial Relations',
-		'description': 'Whether you\'re an employer or employee, our skilled lawyers can provide practical advice and guidance on vast aspects of employment law, from compliance to termination, and help you navigate the legal complexities of industrial relations to achieve a positive outcome.',
-		'subpractice': [
-			'Fundraising',
-			'Employee Share Incentive Plans',
-			'Shareholder\'s Agreement',
-			'Setting Up Business In Malaysia',
-			'Other Agreements (Drafting/Reviewing)'
-		]
-	},
-	{
-		'id': '03',
-		'practice': 'Dispute Resolution',
-		'description': 'Our lawyers are experienced in alternative dispute resolution methods such as arbitration (both domestic and international) and can assist you in settlement negotiations.',
-		'subpractice': [
-			'Fundraising',
-			'Employee Share Incentive Plans',
-			'Shareholder\'s Agreement',
-			'Setting Up Business In Malaysia',
-			'Other Agreements (Drafting/Reviewing)'
-		]
-	},
-	{
-		'id': '04',
-		'practice': 'Startups & VCs',
-		'description': 'Our lawyers will guide startups and venture capitalists through the complex legal requirements of fundraising, shareholder agreements, and growth plans to set you up for long-term success.',
-		'subpractice': [
-			'Fundraising',
-			'Employee Share Incentive Plans',
-			'Shareholder\'s Agreement',
-			'Setting Up Business In Malaysia',
-			'Other Agreements (Drafting/Reviewing)'
-		]
-	},
-	{
-		'id': '05',
-		'practice': 'Property & Tax',
-		'description': 'Our lawyers are well-versed in property transactions and can help you navigate the complex legal landscape of buying, selling, and renting property. We can also help you save on RPGT and stamp duty wherever legally possible.',
-		'subpractice': [
-			'Fundraising',
-			'Employee Share Incentive Plans',
-			'Shareholder\'s Agreement',
-			'Setting Up Business In Malaysia',
-			'Other Agreements (Drafting/Reviewing)'
-		]
-	},
-]
+// const expertiseData = [
+// 	{
+// 		'id': '01',
+// 		'practice': 'Corporate & Commercial',
+// 		'description': 'From mergers and acquisitions to shareholders\' agreements, our commercially savvy legal team has the expertise to help you make informed decisions and protect your business interests.',
+// 		'subpractice': [
+// 			'Fundraising',
+// 			'Employee Share Incentive Plans',
+// 			'Shareholder\'s Agreement',
+// 			'Setting Up Business In Malaysia',
+// 			'Other Agreements (Drafting/Reviewing)'
+// 		]
+// 	},
+// 	{
+// 		'id': '02',
+// 		'practice': 'Employment & Industrial Relations',
+// 		'description': 'Whether you\'re an employer or employee, our skilled lawyers can provide practical advice and guidance on vast aspects of employment law, from compliance to termination, and help you navigate the legal complexities of industrial relations to achieve a positive outcome.',
+// 		'subpractice': [
+// 			'Fundraising',
+// 			'Employee Share Incentive Plans',
+// 			'Shareholder\'s Agreement',
+// 			'Setting Up Business In Malaysia',
+// 			'Other Agreements (Drafting/Reviewing)'
+// 		]
+// 	},
+// 	{
+// 		'id': '03',
+// 		'practice': 'Dispute Resolution',
+// 		'description': 'Our lawyers are experienced in alternative dispute resolution methods such as arbitration (both domestic and international) and can assist you in settlement negotiations.',
+// 		'subpractice': [
+// 			'Fundraising',
+// 			'Employee Share Incentive Plans',
+// 			'Shareholder\'s Agreement',
+// 			'Setting Up Business In Malaysia',
+// 			'Other Agreements (Drafting/Reviewing)'
+// 		]
+// 	},
+// 	{
+// 		'id': '04',
+// 		'practice': 'Startups & VCs',
+// 		'description': 'Our lawyers will guide startups and venture capitalists through the complex legal requirements of fundraising, shareholder agreements, and growth plans to set you up for long-term success.',
+// 		'subpractice': [
+// 			'Fundraising',
+// 			'Employee Share Incentive Plans',
+// 			'Shareholder\'s Agreement',
+// 			'Setting Up Business In Malaysia',
+// 			'Other Agreements (Drafting/Reviewing)'
+// 		]
+// 	},
+// 	{
+// 		'id': '05',
+// 		'practice': 'Property & Tax',
+// 		'description': 'Our lawyers are well-versed in property transactions and can help you navigate the complex legal landscape of buying, selling, and renting property. We can also help you save on RPGT and stamp duty wherever legally possible.',
+// 		'subpractice': [
+// 			'Fundraising',
+// 			'Employee Share Incentive Plans',
+// 			'Shareholder\'s Agreement',
+// 			'Setting Up Business In Malaysia',
+// 			'Other Agreements (Drafting/Reviewing)'
+// 		]
+// 	},
+// ]
 
 const teamData = [
 	{
@@ -108,7 +109,61 @@ const teamData = [
 	},
 ]
 
+const awardData = [
+	{
+		'title': 'Taufiq Yong',
+		'imgUrl': '/assets/award/2019.png',
+		'year': 2019,
+	},
+	{
+		'title': 'Taufiq Yong',
+		'imgUrl': '/assets/award/2020-1.png',
+		'year': 2020,
+	},
+	{
+		'title': 'Taufiq Yong',
+		'imgUrl': '/assets/award/2020-2.png',
+		'year': 2020,
+	},
+	{
+		'title': 'Taufiq Yong',
+		'imgUrl': '/assets/award/2021.jpg',
+		'year': 2021,
+	},
+	{
+		'title': '2022',
+		'imgUrl': '/assets/award/2022.png',
+		'year': 2022,
+	},
+	{
+		'title': 'Taufiq Yong',
+		'imgUrl': '/assets/award/2023-1.jpg',
+		'year': 2023,
+	},
+	{
+		'title': 'Taufiq Yong',
+		'imgUrl': '/assets/award/2023-2.jpg',
+		'year': 2023,
+	},
+]
+
 const Home = () => {
+	const [expertises, setExpertises] = useState([]);
+
+	async function getExpertises() {
+		// TODO: specify data in query
+		const res = await client.fetch(
+			`*[_type == 'expertise']`
+		)
+		.then((data) => setExpertises(data))
+		.catch((err) => console.log(err))
+
+		return res;
+	}
+
+	useEffect(() => {
+		getExpertises();
+	}, [])
 
 	const stats = statsData.map((item, index) => (
 		<li key={index}>
@@ -118,28 +173,27 @@ const Home = () => {
 			</div>
 			<p>{item['label']}</p>
 		</li>
-	));
+	))
 
-	const expertise = expertiseData.map((item, index) => (
-		<li key={index} className='expertise--list'>
+	const expertise = expertises.map((item, index) => (
+		<li key={item._id} className='expertise--list'>
 			<h3 className='expertise--list_no'>{index + 1}.</h3>
-			<h3 className='expertise--list_practice'>{item['practice']}</h3>
+			<h3 className='expertise--list_practice'>{item.practice}</h3>
 			<ul className='expertise--list_tags'>
 				{
-					item['subpractice'].map((item, index) => (
+					item.subareas.map((tags, index) => (
 						<li>
-							<a href={'/contact/' + item} key={index}>{item}</a>
+							<a href={'/contact/' + tags} key={index}>{tags}</a>
 						</li>
 					))
 				}
 			</ul>
 			<div className='expertise--list_desc '>
-
-				<p className='text--long'>{item['description']}</p>
-				<a href={'/' + item['practice']} className='btn btn-primary'>Learn More</a>
+				<p className='text--long'>{item.brief}</p>
+				<a href={'/' + item.practice} className='btn btn-primary'>Learn More</a>
 			</div>
 		</li>
-	));
+	))
 
 	const team = teamData.map((item, index) => (
 		<li key={index} className='team--list'>
@@ -150,7 +204,15 @@ const Home = () => {
 		</li>
 	))
 
+	const award = awardData.map((item, index) => (
+		<li key={index} className='awards--list'>
+			<img src={item['imgUrl']} alt={item['title']} />
+		</li>
+	))
+
+
 	return (
+
 		<main>
 			<section className='hero'>
 				<div className='hero--header'>
@@ -181,16 +243,22 @@ const Home = () => {
 					domestic M&A transactions.
 				</h2>
 				<p className='text--long'>
-					Our vision is to provide our clientele with a solutions-oriented, comprehensive and integrated range
-					of professional legal services and in the process, we strive relentlessly to surpass our exacting
-					standards of service. We believe that being forward-looking and dynamic is our strength, and our
+					Our vision is to provide our clientele with a solutions-oriented and integrated range
+					of professional legal services. We believe that being forward-looking and dynamic is our strength, and our
 					commitment has always been to attain the highest standards in quality, client service and ethics.
 				</p>
 			</section>
+
 			<section className='expertise'>
 				<h1 className='expertise--header'>We provide this expert solutions for your legal matters.</h1>
 				<ul>
 					{expertise}
+				</ul>
+			</section>
+			<section className='awards'>
+				<h1 className='awards--header'>Awards and recognitions</h1>
+				<ul className='awards--body'>
+					{award}
 				</ul>
 			</section>
 			<section className='team'>

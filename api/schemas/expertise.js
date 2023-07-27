@@ -1,29 +1,25 @@
 export default {
 	name: 'expertise',
-	title: 'Expertise',
 	type: 'document',
+	title: 'Expertise',
 	fields: [
 		{
-			name: 'title',
-			title: 'Title',
+			title: 'Practice Area',
+			name: 'practice',
 			type: 'string',
 		},
 		{
-			name: 'subpractice',
-			title: 'Subpractice',
+			title: 'Brief Description',
+			name: 'brief',
+			type: 'text',
+			rows: 4,
+			validation: Rule => Rule.max(280).error('Too wordy'),
+		},
+		{
+			title: 'Sub-areas',
+			name: 'subareas',
 			type: 'array',
-			of: [
-				{
-					name: 'subName',
-					title: 'Subpractice Name',
-					type: 'string',
-				}
-			]
-		},
-		{
-			name: 'title3',
-			title: 'Title 3',
-			type: 'string',
-		},
+			of: [{ type: 'string' }],
+		}
 	]
 }

@@ -1,7 +1,5 @@
 @import '../../styles/globals/breakpoints';
 
-$horizontal-padding : 8vw;
-
 @mixin header() {
 	width: 60%;
 	margin-bottom: 5rem;
@@ -12,9 +10,14 @@ $horizontal-padding : 8vw;
 	}
 }
 
+section {
+	padding: 8vw;
+	border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
 .hero {
 	height: auto;
-	padding: $horizontal-padding;
+	
 	padding-bottom: 0 !important;
 	display: grid;
 	grid-template:
@@ -75,9 +78,8 @@ $horizontal-padding : 8vw;
 }
 
 .stats {
-	padding: $horizontal-padding;
-	border-top: 1px solid rgba(0, 0, 0, 0.2);
-	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+	
+	// border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 
 	&>ul {
 		display: grid;
@@ -109,12 +111,12 @@ $horizontal-padding : 8vw;
 }
 
 .intro {
-	padding: $horizontal-padding;
+	
 	display: grid;
 	grid-template:
 		"a ."
 		". b";
-	gap: 6rem;
+	gap: 4vw;
 
 	&>h2 {
 		grid-area: a;
@@ -129,19 +131,33 @@ $horizontal-padding : 8vw;
 	}
 
 	// KIV
-	@media screen and (max-width: 1200px) {
+	@media screen and (max-width: 992px) {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+.awards {
+	
+
+	&--body {
 		display: flex;
 		flex-direction: row;
-		overflow-x: scroll;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: 2rem;
+	}
 
-		&>h2 {
-			width: 100vw;
+	&--list {
+		img {
+			width: calc(100px + 3vw);
 		}
 	}
 }
 
 .expertise {
-	padding: $horizontal-padding;
+	
 
 	&--header {
 		@include header;
@@ -224,7 +240,7 @@ $horizontal-padding : 8vw;
 }
 
 .team {
-	padding: $horizontal-padding;
+	
 	display: flex;
 	flex-direction: column;
 	align-items: center;

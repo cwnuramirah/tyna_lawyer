@@ -8,7 +8,7 @@ export default defineConfig({
   title: 'tyna_lawyer',
 
   projectId: 'pr9ovigi',
-  dataset: 'production',
+  dataset: 'development',
 
   plugins: [deskTool(), visionTool()],
 

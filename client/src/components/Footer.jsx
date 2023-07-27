@@ -65,14 +65,6 @@ const Footer = () => {
 					<h4>{address}</h4>
 				</address>
 			</div>
-			<div>
-				<p>Social Link</p>
-				<ul>
-					<li><h4><a href='/'>LinkedIn</a></h4></li>
-					<li><h4><a href='/'>Facebook</a></h4></li>
-					<li><h4><a href='/'>Twitter</a></h4></li>
-				</ul>
-			</div>
 		</footer>
 	)
 }

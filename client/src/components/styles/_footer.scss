@@ -5,7 +5,7 @@ footer {
 	color: var(--rgb-white);
 	padding: $padding;
 	display: grid;
-	grid-template-columns: 12vw 12vw 24vw 12vw;
+	grid-template-columns: 1fr 1fr 2fr;
 	gap: $padding;
 
 	h4 {
