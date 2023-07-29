@@ -9,6 +9,23 @@ export default {
 			type: 'string',
 		},
 		{
+			title: 'Slug',
+			name: 'slug',
+			type: 'slug',
+		},
+		{
+			title: 'Sub-areas',
+			name: 'subareas',
+			type: 'array',
+			of: [{ type: 'string' }],
+		},
+		{
+			title: 'Practice Group Head',
+			name: 'head',
+			type: 'reference',
+			to: [{ type: 'team'}],
+		},
+		{
 			title: 'Brief Description',
 			name: 'brief',
 			type: 'text',
@@ -16,10 +33,11 @@ export default {
 			validation: Rule => Rule.max(280).error('Too wordy'),
 		},
 		{
-			title: 'Sub-areas',
-			name: 'subareas',
+			title: 'Full Description',
+			name: 'content',
+			description: 'The content where visitor can learn more about this practice area',
 			type: 'array',
-			of: [{ type: 'string' }],
+			of: [{ type: 'block' }]
 		}
 	]
 }

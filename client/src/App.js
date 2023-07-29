@@ -8,6 +8,7 @@ import Navbar from './components/Navbar';
 import Expertise from './pages/Expertise';
 import Home from './pages/Home';
 import './styles/styles.scss'
+import ExpertiseDetails from './pages/ExpertiseDetails';
 
 const Layout = () => {
 	return (
@@ -31,6 +32,12 @@ const router = createBrowserRouter([
 			{
 				path: '/expertise',
 				element: <Expertise />,
+				// children: [
+				// 	{
+				// 		path: '/:slug',
+				// 		element: <ExpertiseDetails />,
+				// 	}
+				// ]
 			},
 		]
 	}
