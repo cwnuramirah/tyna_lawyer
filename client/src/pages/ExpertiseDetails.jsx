@@ -1,34 +1,47 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { ArrowLeft } from 'react-feather'
+import { Link, useParams } from 'react-router-dom'
+import client from '../client';
 
 const ExpertiseDetails = () => {
-  return (
-	<main>
-	<section>
-		<div>
-			<ArrowLeft />
-			<p><strong>Back to Expertise</strong></p>
-		</div>
-		<h1>Corporate & Commercial</h1>
-		<article>
-			We have been recognised as a leading firm for corporate, mergers and acquisitions by the Legal 500 Asia Pacific in their 2018 rankings. Our partner Shawn Ho was also named as a recommended lawyer.
+	const { expertiseSlug } = useParams();
 
-			Our team of corporate lawyers provide a wide range of services from advisory to transactional services for companies and businesses, including:
+	const [details, setDetails] = useState({});
 
+	async function getExpertiseData() {
+		const res = await client.fetch(
+			`*[_type == 'expertise' && slug.current == '${expertiseSlug}']{
+				practice,
+				brief,
+				'headOfDep': head->fullName
+			}
+			[0]`
+		)
+			.then((data) => setDetails(data))
+			.catch((err) => console.log(err))
 
+		return res;
+	}
 
-			Market Entry / Business Setup
+	useEffect(() => {
+		getExpertiseData();
+	}, [])
+	
+	return (
+		<main>
+			<section>
+				<Link to={-1}>
+					<ArrowLeft />
+					<p><strong>Back to Expertise</strong></p>
+				</Link>
+				<h1>{details["practice"]}</h1>
+				<article>
+					{details["brief"]}
+				</article>
 
-			Selecting and capital structuring of the legal entity
-			Advising on regulatory requirements and applicable licences
-			Issuing written legal opinions for market entry
-			Key startup legal documents: Founders agreements, shareholder agreements, employment contracts and handbook, privacy policy
-			Connecting with reliable professional service providers
-		</article>
-
-	</section>
-</main>
-  )
+			</section>
+		</main>
+	)
 }
 
 export default ExpertiseDetails

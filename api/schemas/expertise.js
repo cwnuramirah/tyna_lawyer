@@ -17,7 +17,7 @@ export default {
 			title: 'Sub-areas',
 			name: 'subareas',
 			type: 'array',
-			of: [{ type: 'string' }],
+			of: { type: 'string' },
 		},
 		{
 			title: 'Practice Group Head',

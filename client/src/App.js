@@ -3,11 +3,11 @@ import {
 	Outlet,
 	RouterProvider
 } from 'react-router-dom'
+import './styles/styles.scss'
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import Expertise from './pages/Expertise';
 import Home from './pages/Home';
-import './styles/styles.scss'
 import ExpertiseDetails from './pages/ExpertiseDetails';
 
 const Layout = () => {
@@ -32,21 +32,19 @@ const router = createBrowserRouter([
 			{
 				path: '/expertise',
 				element: <Expertise />,
-				// children: [
-				// 	{
-				// 		path: '/:slug',
-				// 		element: <ExpertiseDetails />,
-				// 	}
-				// ]
 			},
+			{
+				path: '/expertise/:expertiseSlug',
+				element: <ExpertiseDetails />,
+			}
 		]
 	}
 ])
 
 function App() {
-  return (
-    <RouterProvider router={router} />
-  );
+	return (
+		<RouterProvider router={router} />
+	);
 }
 
 export default App

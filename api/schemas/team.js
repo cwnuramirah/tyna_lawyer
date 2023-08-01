@@ -38,8 +38,8 @@ export default {
 				{title: 'Senior Associates', value: '2'},
 				{title: 'Associates', value: '3'},
 				{title: 'Core Team', value: '4'}
-			  ], // <-- predefined values
-			  layout: 'radio' // <-- defaults to 'dropdown'
+			  ],
+			  layout: 'radio'
 			}
 		  },
 		  {

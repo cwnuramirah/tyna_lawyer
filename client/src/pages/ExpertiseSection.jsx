@@ -1,28 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import client from '../client';
+import React from 'react';
+import { useExpertiseData } from '../data/useExpertiseData';
+import { Link } from 'react-router-dom';
 
 const ExpertiseSection = () => {
-	const [expertiseData, setExpertiseData] = useState([]);
 
-	async function getExpertiseData() {
-		// TODO: specify data in query
-		const res = await client.fetch(
-			`*[_type == 'expertise']{
-				practice,
-				slug,
-				subareas,
-				brief,
-			}`
-		)
-			.then((data) => setExpertiseData(data))
-			.catch((err) => console.log(err))
-
-		return res;
-	}
-
-	useEffect(() => {
-		getExpertiseData();
-	}, [])
+	const { expertiseData } = useExpertiseData();
 
 	return (
 		<section className='expertise'>
@@ -30,7 +12,7 @@ const ExpertiseSection = () => {
 			<ul>
 				{
 					expertiseData.map((expertise, index) => (
-						<li key={expertise._id} className='expertise--list'>
+						<li key={expertise.slug} className='expertise--list'>
 							<h3 className='expertise--list_no'>{index + 1}.</h3>
 							<h3 className='expertise--list_practice'>{expertise.practice}</h3>
 							<ul className='expertise--list_tags'>
@@ -44,7 +26,7 @@ const ExpertiseSection = () => {
 							</ul>
 							<div className='expertise--list_desc '>
 								<p className='text--long'>{expertise.brief}</p>
-								<a href={'/' + expertise.slug} className='btn btn-primary'>Learn More</a>
+								<Link to={'/expertise/' + expertise.slug} className='btn btn-primary'>Learn More</Link>
 							</div>
 						</li>
 					))
