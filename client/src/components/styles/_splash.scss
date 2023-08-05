@@ -1,0 +1,80 @@
+.hide-content {
+	display: none;
+}
+
+.display-content {
+	display: block;
+}
+
+.splash {
+	z-index: 999;
+	background-color: var(--rgb-white);
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	animation: shrinkToNavbarHeight 2s 13s;
+	animation-fill-mode: both;
+	animation-iteration-count: 1;
+
+	&--text {
+		position: absolute;
+	}
+
+	&--text:nth-of-type(1) {
+		animation-name: fadeInOut;
+		animation-fill-mode: both;
+		animation-iteration-count: 1;
+		animation-duration: 4s;
+	}
+
+	&--text:nth-of-type(2) {
+		animation-name: fadeInOut;
+		animation-fill-mode: both;
+		animation-iteration-count: 1;
+		animation-delay: 4s;
+		animation-duration: 4s;
+	}
+
+	&--text:nth-of-type(3) {
+		animation-name: fadeInOut;
+		animation-fill-mode: both;
+		animation-iteration-count: 1;
+		animation-delay: 8s;
+		animation-duration: 4s;
+	}
+
+	&--text:nth-of-type(4) {
+		transform: translateX(0);
+		animation: fadeInOut 4s 12s;
+		animation-fill-mode: both;
+		animation-iteration-count: 1;
+	}
+
+}
+
+@keyframes fadeInOut {
+	0% {
+		opacity: 0;
+	}
+
+	60% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+	}
+}
+
+@keyframes shrinkToNavbarHeight {
+	from {
+		height: 100vh;
+	}
+
+	to {
+		height: var(--navbar-height);
+	}
+}
