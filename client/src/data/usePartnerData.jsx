@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
 import client from '../client';
+import { useImageUrlBuilder } from './useImageUrlBuilder';
 
 export const usePartnerData = () => {
 	const [partnerData, setPartnerData] = useState([]);
+	const { urlFor } = useImageUrlBuilder();
 
 	async function getPartnerData() {
 
@@ -17,7 +19,13 @@ export const usePartnerData = () => {
 			}[0...3]
 			`
 		)
-			.then((data) => setPartnerData(data))
+			.then((data) => {
+				data.map((partner) => {
+					partner.potrait = urlFor(partner.potrait)
+					return partner
+				})
+				setPartnerData(data)
+			})
 			.catch((err) => console.log(err))
 
 		return res;

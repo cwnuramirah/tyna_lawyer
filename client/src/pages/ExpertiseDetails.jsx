@@ -3,23 +3,29 @@ import { ArrowLeft } from 'react-feather'
 import { Link, useParams } from 'react-router-dom'
 import BlockContent from '@sanity/block-content-to-react';
 import client from '../client';
+import { useImageUrlBuilder } from '../data/useImageUrlBuilder';
 
 const ExpertiseDetails = () => {
 	const { expertiseSlug } = useParams();
 
 	const [details, setDetails] = useState({});
+	const { urlFor } = useImageUrlBuilder();
 
 	async function getExpertiseData() {
 		const res = await client.fetch(
 			`*[_type == 'expertise' && slug.current == '${expertiseSlug}']{
 				practice,
 				brief,
-				'headOfDep': head->fullName,
+				'headOfDepName': head->fullName,
+				'headOfDepPotrait': head->potrait.asset._ref,
 				content
 			}
 			[0]`
 		)
-			.then((data) => setDetails(data))
+			.then((data) => {
+				data["headOfDepPotrait"] = urlFor(data["headOfDepPotrait"]);
+				setDetails(data);
+			})
 			.catch((err) => console.log(err))
 
 		return res;
@@ -40,11 +46,13 @@ const ExpertiseDetails = () => {
 			</section>
 			<section className='expertiseDetails--body'>
 				<div className='expertiseDetails--body_article'>
-						<BlockContent blocks={details["content"]} />
+					<BlockContent blocks={details["content"]} />
 				</div>
 				<div className='expertiseDetails--body_info'>
-						<div className='expertiseDetails--body_info_image'></div>
-						<p className='expertiseDetails--body_info_name'>{details['headOfDep']}</p>
+					<figure className='expertiseDetails--body_info_image'>
+						<img src={details['headOfDepPotrait']} alt='Head Of department' />
+					</figure>
+					<p className='expertiseDetails--body_info_name'>{details['headOfDepName']}</p>
 				</div>
 			</section>
 		</main>
