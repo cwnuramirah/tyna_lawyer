@@ -99,7 +99,7 @@ const Home = () => {
 						<a href='/'>Find Out More</a>
 					</div>
 				</div>
-				<p className='hero--label'>Taufiq Yong<br />
+				<p className='hero--label'><strong>Taufiq Yong</strong><br />
 					Managing Partner</p>
 				<img src='/assets/tyna-leader.png' className='hero--img' alt='Taufiq Young, Managing Lawyer for Taufiq & Associates' />
 			</section>
@@ -121,13 +121,12 @@ const Home = () => {
 				</p>
 			</section>
 			<ExpertiseSection />
+			<TeamSection />
 			<section className='awards'>
-				<h1 className='awards--header'>Awards and recognitions</h1>
 				<ul className='awards--body'>
 					{award}
 				</ul>
 			</section>
-			<TeamSection />
 		</main>
 	)
 }

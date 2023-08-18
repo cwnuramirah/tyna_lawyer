@@ -2,16 +2,19 @@
 
 .hero {
 	@include mixins.section;
-	height: auto;
+	height: calc(100vh - var(--navbar-height));
 
 	padding-bottom: 0 !important;
+	padding-top: 0 !important;
 	display: grid;
 	grid-template:
 		"a c"
 		"b c";
 	grid-template-columns: 1.15fr 0.85fr;
+	grid-template-rows: max-content auto;
 	column-gap: 6rem;
 	overflow-x: clip;
+	overflow-y: clip;
 
 	&--header {
 		grid-area: a;
@@ -29,7 +32,6 @@
 		grid-area: b;
 		place-self: center end;
 		text-align: right;
-		margin: 10vh 0;
 	}
 
 	&--img {
@@ -42,12 +44,16 @@
 	}
 
 	@media screen and (max-width: 1200px) {
+		height: auto;
 		grid-template:
 			"a a"
 			"b c";
 		grid-template-columns: 1fr 1fr;
 		column-gap: 0;
 
+		&--header {
+			margin-top: 8vw;
+		}
 
 		&--label {
 			grid-area: b;
