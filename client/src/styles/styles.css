@@ -152,43 +152,42 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  animation: shrinkToNavbarHeight 2s 13s;
+  animation-fill-mode: both;
+  animation-iteration-count: 1;
 }
 .splash--text {
   position: absolute;
 }
 .splash--text:nth-of-type(1) {
-  animation-name: fade;
+  animation-name: fadeInOut;
   animation-fill-mode: both;
   animation-iteration-count: 1;
   animation-duration: 4s;
-  animation-direction: normal;
 }
 .splash--text:nth-of-type(2) {
-  animation-name: fade;
+  animation-name: fadeInOut;
   animation-fill-mode: both;
   animation-iteration-count: 1;
   animation-delay: 4s;
   animation-duration: 4s;
-  animation-direction: normal;
 }
 .splash--text:nth-of-type(3) {
-  animation-name: fade;
+  animation-name: fadeInOut;
   animation-fill-mode: both;
   animation-iteration-count: 1;
   animation-delay: 8s;
   animation-duration: 4s;
-  animation-direction: normal;
 }
 .splash--text:nth-of-type(4) {
-  animation-name: fade;
+  transform: translateX(0);
+  animation: fadeInOut 4s 12s;
   animation-fill-mode: both;
   animation-iteration-count: 1;
-  animation-delay: 12s;
-  animation-duration: 4s;
-  animation-direction: normal;
 }
 
-@keyframes fade {
+@keyframes fadeInOut {
   0% {
     opacity: 0;
   }
@@ -197,6 +196,14 @@ ul {
   }
   100% {
     opacity: 0;
+  }
+}
+@keyframes shrinkToNavbarHeight {
+  from {
+    height: 100vh;
+  }
+  to {
+    height: var(--navbar-height);
   }
 }
 .btn {
@@ -212,8 +219,15 @@ ul {
 }
 .btn-primary {
   background-color: var(--rgb-black);
+  border: 2px solid var(--rgb-black);
   color: var(--rgb-white);
   text-decoration: none;
+  transition: all 0.3s ease-in;
+}
+.btn-primary:hover {
+  background-color: var(--rgb-white);
+  color: var(--rgb-black);
+  box-shadow: 0px 2px 10px rgba(var(--raw-black), 0.2);
 }
 
 :root {
@@ -225,13 +239,13 @@ main {
 }
 
 .navbar {
-  padding: 1rem 6rem;
+  padding: 1rem 8vw;
   height: var(--navbar-height);
   position: fixed;
   top: 0;
   right: 0;
   left: 0;
-  z-index: 99;
+  z-index: 1000;
   width: 100vw;
   display: flex;
   flex-direction: row;
@@ -287,7 +301,7 @@ main {
     width: 100vw;
     background-color: var(--rgb-white);
     height: var(--navbar-height);
-    padding: 1rem 6rem;
+    padding: 1rem 8vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -370,14 +384,17 @@ footer > div ul li #activeOffice {
 .hero {
   padding: 8vw;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
-  height: auto;
+  height: calc(100vh - var(--navbar-height));
   padding-bottom: 0 !important;
+  padding-top: 0 !important;
   display: grid;
   grid-template: "a c" "b c";
   grid-template-columns: 1.15fr 0.85fr;
+  grid-template-rows: max-content auto;
   -moz-column-gap: 6rem;
        column-gap: 6rem;
   overflow-x: clip;
+  overflow-y: clip;
 }
 .hero--header {
   grid-area: a;
@@ -393,7 +410,6 @@ footer > div ul li #activeOffice {
   grid-area: b;
   place-self: center end;
   text-align: right;
-  margin: 10vh 0;
 }
 .hero--img {
   grid-area: c;
@@ -405,10 +421,14 @@ footer > div ul li #activeOffice {
 }
 @media screen and (max-width: 1200px) {
   .hero {
+    height: auto;
     grid-template: "a a" "b c";
     grid-template-columns: 1fr 1fr;
     -moz-column-gap: 0;
          column-gap: 0;
+  }
+  .hero--header {
+    margin-top: 8vw;
   }
   .hero--label {
     grid-area: b;
@@ -456,16 +476,21 @@ footer > div ul li #activeOffice {
   padding: 8vw;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
   display: grid;
-  grid-template: "a ." ". b";
+  grid-template: "a ." "b b" ". c";
   gap: 4vw;
 }
 .intro > h2 {
   grid-area: a;
-  place-self: center;
+  width: 40vw;
+  text-align: justify;
+}
+.intro > img {
+  grid-area: b;
+  width: 100%;
 }
 .intro > p {
-  grid-area: b;
-  place-self: center;
+  grid-area: c;
+  width: 40vw;
   text-align: justify;
   text-justify: inter-word;
 }
@@ -473,6 +498,10 @@ footer > div ul li #activeOffice {
   .intro {
     display: flex;
     flex-direction: column;
+  }
+  .intro > h2,
+  .intro p {
+    width: 100%;
   }
 }
 
@@ -485,11 +514,11 @@ footer > div ul li #activeOffice {
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   gap: 2rem;
 }
 .awards--list img {
-  width: calc(100px + 3vw);
+  width: calc(80px + 1vw);
 }
 
 .team {
@@ -535,6 +564,69 @@ footer > div ul li #activeOffice {
   }
 }
 
+.practicearea {
+  padding: 8vw;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  display: grid;
+  grid-template: "a ." ". b" ". c";
+  gap: 4vw;
+}
+.practicearea--header {
+  grid-area: a;
+  display: flex;
+  width: 40vw;
+}
+.practicearea--list {
+  grid-area: b;
+  width: 40vw;
+}
+.practicearea--list > svg {
+  flex-shrink: 0;
+}
+.practicearea--list h4 {
+  font-weight: 400 !important;
+  font-style: normal !important;
+}
+.practicearea--item {
+  padding: 1rem;
+  transition: padding 0.2s ease-in;
+}
+.practicearea--item:hover {
+  padding-left: 3rem;
+}
+.practicearea--item a {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+.practicearea--item a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0;
+  height: 1.5px;
+  border-radius: 1px;
+  background-color: var(--rgb-black);
+  transition: width 0.3s ease-in-out;
+}
+.practicearea--item a:hover::before {
+  width: 100%;
+}
+.practicearea > a {
+  grid-area: c;
+}
+@media screen and (max-width: 992px) {
+  .practicearea {
+    display: flex;
+    flex-direction: column;
+  }
+  .practicearea--header, .practicearea--list {
+    width: 100%;
+  }
+}
+
 .expertiseDetails {
   padding: 8vw;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
@@ -573,21 +665,63 @@ footer > div ul li #activeOffice {
 .expertiseDetails--body_article p:empty {
   display: none;
 }
-.expertiseDetails--body_article h1, .expertiseDetails--body_article h2, .expertiseDetails--body_article h3, .expertiseDetails--body_article h4 {
+.expertiseDetails--body_article h1,
+.expertiseDetails--body_article h2,
+.expertiseDetails--body_article h3,
+.expertiseDetails--body_article h4 {
   margin-top: 16px;
 }
-.expertiseDetails--body_info {
-  padding: 2rem;
+.expertiseDetails--body_sidebar_wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1.5rem;
+  gap: 1rem;
   border-radius: 20px;
   background-color: white;
-  height: -moz-fit-content;
-  height: fit-content;
+}
+.expertiseDetails--body_sidebar_header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.expertiseDetails--body_sidebar_header :first-child {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+}
+.expertiseDetails--body_sidebar_header :first-child h5 {
+  margin: 0;
+}
+.expertiseDetails--body_info_content {
+  display: grid;
+  grid-template-columns: max-content auto;
+  gap: 16px;
+}
+.expertiseDetails--body_info_content :nth-child(2) {
+  place-self: center start;
 }
 .expertiseDetails--body_info_image {
   width: 100px;
-  aspect-ratio: 1;
+  height: 100px;
   border-radius: 50%;
   border: 1px solid;
+}
+.expertiseDetails--body_info_contact li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+.expertiseDetails--body_info_contact li :first-child {
+  height: 16px;
+  width: 16px;
+  opacity: 70%;
+}
+.expertiseDetails--body_info_contact li a {
+  color: #2e63eb;
 }
 @media screen and (max-width: 992px) {
   .expertiseDetails--body {
@@ -630,6 +764,11 @@ footer > div ul li #activeOffice {
 .expertise--list_tags {
   grid-area: tags;
 }
+.expertise--list_tags_skeleton {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 999px !important;
+}
 .expertise--list_tags li {
   display: inline-block;
   margin: 0 1rem 1rem 0;
@@ -646,7 +785,7 @@ footer > div ul li #activeOffice {
   flex-direction: column;
   gap: 6rem;
 }
-.expertise--list_desc a {
+.expertise--list_desc :last-child {
   width: -moz-max-content;
   width: max-content;
   align-self: self-end;
@@ -659,11 +798,6 @@ footer > div ul li #activeOffice {
   }
   .expertise--list_desc > p {
     display: none;
-  }
-  .expertise--list_desc a {
-    width: -moz-max-content;
-    width: max-content;
-    align-self: self-end;
   }
 }
 @media screen and (max-width: 922px) {

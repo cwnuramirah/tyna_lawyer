@@ -1,9 +1,13 @@
 import React from 'react'
 import { useState } from 'react'
+import { NavLink } from 'react-router-dom'
 
 const Navbar = () => {
 	const [expanded, setExpanded] = useState(false)
 	const onToggle = () => setExpanded(!expanded)
+
+	//active page indicator using NavLink function
+	const activeLink = ({isActive}) => isActive ? "nav-link nav-link-active" : "nav-link";
 
 	return (
 		<header className="navbar">
@@ -15,10 +19,10 @@ const Navbar = () => {
 					<button id="nav-btn" onClick={onToggle}>M</button>
 				</div>
 				<ul className={expanded ? "nav-list-expanded" : "nav-list"}>
-					<li><a href="/">About</a></li>
-					<li><a href="/expertise">Expertise</a></li>
-					<li><a href="/">Team</a></li>
-					<li><a href="/">Articles</a></li>
+					<li><NavLink to="/about" className={activeLink}>About</NavLink></li>
+					<li><NavLink to="/expertise" className={activeLink}>Expertise</NavLink></li>
+					<li><NavLink to="/" className={activeLink}>Team</NavLink></li>
+					<li><NavLink to="/" className={activeLink}>Articles</NavLink></li>
 					<li><button className='btn btn-primary'>Contact Us</button></li>
 				</ul>
 			</nav>

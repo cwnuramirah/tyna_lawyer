@@ -6,7 +6,7 @@ $white: var(--rgb-white);
 $black: var(--rgb-black);
 $grey: var(--rgb-grey);
 $navbar-height: var(--navbar-height);
-$navbar-padding: 1rem 6rem;
+$navbar-padding: 1rem 8vw;
 
 main {
 	margin-top: $navbar-height;
@@ -36,25 +36,35 @@ main {
 	flex-direction: row;
 	align-items: center;
 	gap: 2rem;
+}
 
-	li>a {
-		display: inline-block;
-		position: relative;
 
-		&::before {
-			content: "";
-			position: absolute;
-			left: 0;
-			bottom: -3px;
-			width: 0;
-			height: 1px;
-			background-color: $black;
-			transition: width 0.3s ease-in-out;
-		}
+.nav-link {
+	display: inline-block;
+	position: relative;
 
-		&:hover::before {
-			width: 100%;
-		}
+	&::before {
+		content: "";
+		position: absolute;
+		left: 0;
+		bottom: -3px;
+		width: 0;
+		height: 1.5px;
+		background-color: $black;
+		transition: width 0.3s ease-in-out;
+	}
+
+	&:hover::before {
+		width: 100%;
+	}
+}
+
+.nav-link-active {
+	color: var(--rgb-blue);
+
+	&::before {
+		width: 100%;
+		background-color: var(--rgb-blue);
 	}
 }
 
