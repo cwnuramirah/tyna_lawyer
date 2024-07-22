@@ -4,36 +4,36 @@ export default {
 	title: 'Expertise',
 	fields: [
 		{
-			title: 'Practice Area',
 			name: 'practice',
+			title: 'PRACTICE AREA',
 			type: 'string',
 		},
 		{
-			title: 'Slug',
 			name: 'slug',
+			title: 'SLUG',
 			type: 'slug',
 		},
 		{
-			title: 'Sub-areas',
+			title: 'SUB-AREAS',
 			name: 'subareas',
 			type: 'array',
 			of: [{ type: 'string' }],
 		},
 		{
-			title: 'Practice Group Head',
+			title: 'PRACTICE GROUP HEAD',
 			name: 'head',
 			type: 'reference',
 			to: [{ type: 'team'}],
 		},
 		{
-			title: 'Brief Description',
+			title: 'BRIEF DESCRIPTION',
 			name: 'brief',
 			type: 'text',
 			rows: 4,
 			validation: Rule => Rule.max(280).error('Too wordy'),
 		},
 		{
-			title: 'Full Description',
+			title: 'FULL DESCRIPTION',
 			name: 'content',
 			description: 'The content where visitor can learn more about this practice area',
 			type: 'array',
