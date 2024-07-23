@@ -107,25 +107,35 @@
 	display: grid;
 	grid-template:
 		"a ."
-		". b";
-	gap: 4vw;
+		"b b"
+		". c";
+	grid-template-columns: 1fr 1fr;
+	gap: 2vw;
 
 	&>h2 {
 		grid-area: a;
-		place-self: center;
+		text-align: justify;
+	}
+
+	&>img {
+		grid-area: b;
+		width: 100%;
 	}
 
 	&>p {
-		grid-area: b;
-		place-self: center;
+		grid-area: c;
 		text-align: justify;
 		text-justify: inter-word;
 	}
 
-	// KIV
 	@media screen and (max-width: 992px) {
 		display: flex;
 		flex-direction: column;
+
+		&>h2,
+		p {
+			width: 100%;
+		}
 	}
 }
 
@@ -137,13 +147,13 @@
 		flex-direction: row;
 		flex-wrap: wrap;
 		align-items: center;
-		justify-content: space-between;
+		justify-content: space-around;
 		gap: 2rem;
 	}
 
 	&--list {
 		img {
-			width: calc(100px + 3vw);
+			width: calc(80px + 1vw);
 		}
 	}
 }
@@ -189,6 +199,71 @@
 			img {
 				width: 70%;
 			}
+		}
+	}
+}
+
+.practicearea {
+	@include mixins.section;
+
+	display: grid;
+	grid-template:
+		"a ."
+		". b"
+		". c";
+	grid-template-columns: 1fr 1fr;
+	gap: 2vw;
+
+	&--header {
+		grid-area: a;
+		display: flex;
+	}
+
+	&--list {
+		grid-area: b;
+		width: 100%;
+		place-self: center;
+
+		&>svg {
+			flex-shrink: 0;
+		}
+
+		h4 {
+			font-weight: 400 !important;
+			font-style: normal !important;
+		}
+	}
+
+	&--item {
+		padding: 1rem 0;
+		//shift right on hover microanimation
+		transition: padding 0.2s ease-in;
+
+		&:hover {
+			padding-left: 2rem;
+		}
+
+		a {
+			display: inline-flex;
+			align-items: center;
+			gap: 1rem;
+			@include mixins.underlineEffect;
+		}
+	}
+
+	//button link
+	&>a {
+		grid-area: c;
+		height: fit-content;
+	}
+
+	@media screen and (max-width: 992px) {
+		display: flex;
+		flex-direction: column;
+
+		&--header,
+		&--list {
+			width: 100%;
 		}
 	}
 }

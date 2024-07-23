@@ -1,3 +1,4 @@
+import AwardSection from "./AwardSection"
 import ExpertiseSection from "./ExpertiseSection"
 import TeamSection from "./TeamSection"
 
@@ -28,44 +29,6 @@ const statsData = [
 	},
 ]
 
-const awardData = [
-	{
-		'title': 'Taufiq Yong',
-		'imgUrl': '/assets/award/2019.png',
-		'year': 2019,
-	},
-	{
-		'title': 'Taufiq Yong',
-		'imgUrl': '/assets/award/2020-1.png',
-		'year': 2020,
-	},
-	{
-		'title': 'Taufiq Yong',
-		'imgUrl': '/assets/award/2020-2.png',
-		'year': 2020,
-	},
-	{
-		'title': 'Taufiq Yong',
-		'imgUrl': '/assets/award/2021.jpg',
-		'year': 2021,
-	},
-	{
-		'title': '2022',
-		'imgUrl': '/assets/award/2022.png',
-		'year': 2022,
-	},
-	{
-		'title': 'Taufiq Yong',
-		'imgUrl': '/assets/award/2023-1.jpg',
-		'year': 2023,
-	},
-	{
-		'title': 'Taufiq Yong',
-		'imgUrl': '/assets/award/2023-2.jpg',
-		'year': 2023,
-	},
-]
-
 const Home = () => {
 
 	const stats = statsData.map((item, index) => (
@@ -75,12 +38,6 @@ const Home = () => {
 				<span>{item['context']}</span>
 			</div>
 			<p>{item['label']}</p>
-		</li>
-	))
-
-	const award = awardData.map((item, index) => (
-		<li key={index} className='awards--list'>
-			<img src={item['imgUrl']} alt={item['title']} />
 		</li>
 	))
 
@@ -114,6 +71,7 @@ const Home = () => {
 					its impressive team of lawyers frequently engaged on cross-border and
 					domestic M&A transactions.
 				</h2>
+				<img src='/assets/jumbo-img.jpg' alt='deco' />
 				<p className='text--long'>
 					Our vision is to provide our clientele with a solutions-oriented and integrated range
 					of professional legal services. We believe that being forward-looking and dynamic is our strength, and our
@@ -122,11 +80,7 @@ const Home = () => {
 			</section>
 			<ExpertiseSection />
 			<TeamSection />
-			<section className='awards'>
-				<ul className='awards--body'>
-					{award}
-				</ul>
-			</section>
+			<AwardSection />
 		</main>
 	)
 }

@@ -1,12 +1,12 @@
 :root {
-	--navbar-height: 96px;
+	--navbar-height: 5rem;
 }
 
 $white: var(--rgb-white);
 $black: var(--rgb-black);
 $grey: var(--rgb-grey);
 $navbar-height: var(--navbar-height);
-$navbar-padding: 1rem 8vw;
+$navbar-padding: 0 12vw;
 
 main {
 	margin-top: $navbar-height;
