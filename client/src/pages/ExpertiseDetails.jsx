@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { ArrowLeft, ChevronDown, Folder, Mail, Phone, User } from 'react-feather'
+import { ArrowLeft } from 'react-feather'
 import { Link, useParams } from 'react-router-dom'
 import BlockContent from '@sanity/block-content-to-react';
 import client from '../client';
@@ -33,6 +33,7 @@ const ExpertiseDetails = () => {
 
 	useEffect(() => {
 		getExpertiseData();
+		console.log(details)
 	}, [])
 
 	return (
@@ -40,50 +41,26 @@ const ExpertiseDetails = () => {
 			<section className='expertiseDetails--header'>
 				<Link to={-1} className='expertiseDetails--header_backLink'>
 					<ArrowLeft />
-					<p><strong>Back to Expertise</strong></p>
+					<p>Home / Expertise /</p>
 				</Link>
 				<h1>{details["practice"]}</h1>
+				<div className='expertiseDetails--header_hod'>
+					<img src={details['headOfDepPotrait']} alt='Head Of department' className='expertiseDetails--header_hod_potrait' />
+					<div>
+						<p className='expertiseDetails--header_hod_name'><strong>{details['headOfDepName']}</strong></p>
+						<p>Head of Department</p>
+					</div>
+				</div>
 			</section>
 			<section className='expertiseDetails--body'>
-				<div className='expertiseDetails--body_article'>
-					<BlockContent blocks={details["content"]} />
-				</div>
-				<div className='expertiseDetails--body_sidebar'>
-					<div className='expertiseDetails--body_sidebar_wrapper'>
-						<div className='expertiseDetails--body_sidebar_header'>
-							<div>
-								<User />
-								<h5>Practice Group Head</h5>
-							</div>
-							<ChevronDown />
+				{
+					Object.keys(details).length !== 0 ?
+						<div className='text--long'>
+							<BlockContent blocks={details["content"]} />
 						</div>
-						<div className='expertiseDetails--body_info_content'>
-							<img src={details['headOfDepPotrait']} alt='Head Of department' className='expertiseDetails--body_info_image' />
-							<div>
-								<p className='expertiseDetails--body_info_name'>{details['headOfDepName']}</p>
-								<ul className='expertiseDetails--body_info_contact'>
-									<li>
-										<Mail />
-										<a href='/#'>taufiqyong@tynco.com</a>
-									</li>
-									<li>
-										<Phone />
-										<a href='/#'>+6011-1789 2725</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div className='expertiseDetails--body_sidebar_wrapper'>
-						<div className='expertiseDetails--body_sidebar_header'>
-							<div>
-								<Folder />
-								<h5>Related Cases</h5>
-							</div>
-							<ChevronDown />
-						</div>
-					</div>
-				</div>
+						: <p>Loading contents...</p>
+				}
+
 			</section>
 		</main>
 	)
