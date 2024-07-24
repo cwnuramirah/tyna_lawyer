@@ -1,0 +1,46 @@
+@use './mixins';
+@use '../globals/breakpoints' as bp;
+
+.team {
+	@include mixins.section;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+
+	&--header {
+		@include mixins.header;
+	}
+
+	&--body {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	&--list {
+		img {
+			width: 100%;
+			border: 1px solid var(--rgb-black);
+			margin-bottom: 1rem;
+		}
+	}
+
+	@media screen and (max-width: bp.$screenlg){
+		&--body {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media screen and (max-width: bp.$screenmd) {
+		&--body {
+			display: flex;
+			flex-direction: column;
+		}
+
+		&--list {
+			img {
+				width: 70%;
+			}
+		}
+	}
+}

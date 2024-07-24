@@ -550,7 +550,7 @@ footer > div ul li #activeOffice {
   width: calc(80px + 1vw);
 }
 
-.team {
+.partner {
   padding: 8vw 12vw;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
   display: flex;
@@ -559,21 +559,21 @@ footer > div ul li #activeOffice {
   text-align: center;
 }
 @media screen and (min-width: 1920px) {
-  .team {
+  .partner {
     padding: 4vw 24vw;
   }
 }
-.team--header {
+.partner--header {
   width: 60%;
   margin-bottom: 5rem;
 }
 @media screen and (max-width: 1200px) {
-  .team--header {
+  .partner--header {
     width: 100%;
     margin-bottom: 3rem;
   }
 }
-.team--body {
+.partner--body {
   overflow: hidden;
   position: relative;
   display: grid;
@@ -581,19 +581,19 @@ footer > div ul li #activeOffice {
   gap: 3rem;
   margin-bottom: 5rem;
 }
-.team--list img {
+.partner--list img {
   width: 100%;
   border: 1px solid var(--rgb-black);
   margin-bottom: 1rem;
 }
 @media screen and (max-width: 992px) {
-  .team--body {
+  .partner--body {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     margin-bottom: 3rem;
   }
-  .team--list img {
+  .partner--list img {
     width: 70%;
   }
 }
@@ -871,5 +871,52 @@ footer > div ul li #activeOffice {
          column-gap: 1rem;
     row-gap: 1rem;
     padding: 3rem 1rem;
+  }
+}
+
+.team {
+  padding: 8vw 12vw;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+@media screen and (min-width: 1920px) {
+  .team {
+    padding: 4vw 24vw;
+  }
+}
+.team--header {
+  width: 60%;
+  margin-bottom: 5rem;
+}
+@media screen and (max-width: 1200px) {
+  .team--header {
+    width: 100%;
+    margin-bottom: 3rem;
+  }
+}
+.team--body {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.team--list img {
+  width: 100%;
+  border: 1px solid var(--rgb-black);
+  margin-bottom: 1rem;
+}
+@media screen and (max-width: 992px) {
+  .team--body {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 768px) {
+  .team--body {
+    display: flex;
+    flex-direction: column;
+  }
+  .team--list img {
+    width: 70%;
   }
 }/*# sourceMappingURL=styles.css.map */

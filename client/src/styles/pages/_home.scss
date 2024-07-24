@@ -159,7 +159,7 @@
 	}
 }
 
-.team {
+.partner {
 	@include mixins.section;
 	display: flex;
 	flex-direction: column;
@@ -168,7 +168,6 @@
 
 	&--header {
 		@include mixins.header;
-		;
 	}
 
 	&--body {

@@ -12,6 +12,7 @@ import Expertise from './pages/Expertise';
 import ExpertiseDetails from './pages/ExpertiseDetails';
 import { useSplashScreen } from './data/useSplashScreen';
 import About from './pages/About';
+import Team from './pages/Team';
 
 const Layout = () => {
 
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
 			{
 				path: '/expertise/:expertiseSlug',
 				element: <ExpertiseDetails />,
+			},
+			{
+				path: '/team',
+				element: <Team />
 			}
 		]
 	}
