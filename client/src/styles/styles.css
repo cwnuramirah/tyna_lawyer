@@ -279,6 +279,7 @@ main {
   bottom: -3px;
   width: 0;
   height: 1.5px;
+  border-radius: 1px;
   background-color: var(--rgb-black);
   transition: width 0.3s ease-in-out;
 }

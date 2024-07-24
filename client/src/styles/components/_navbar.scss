@@ -1,4 +1,5 @@
 @use '../globals/breakpoints' as bp;
+@use '../pages/mixins';
 
 :root {
 	--navbar-height: 5rem;
@@ -43,22 +44,7 @@ main {
 
 .nav-link {
 	display: inline-block;
-	position: relative;
-
-	&::before {
-		content: "";
-		position: absolute;
-		left: 0;
-		bottom: -3px;
-		width: 0;
-		height: 1.5px;
-		background-color: $black;
-		transition: width 0.3s ease-in-out;
-	}
-
-	&:hover::before {
-		width: 100%;
-	}
+	@include mixins.underlineEffect;
 }
 
 .nav-link-active {
