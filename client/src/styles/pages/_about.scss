@@ -1,0 +1,65 @@
+@use './mixins';
+@use '../globals/breakpoints' as bp;
+
+.about {
+	&>header {
+		@include mixins.section;
+	}
+
+	&>section {
+		@include mixins.section;
+	}
+
+	&--principles {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 4vw;
+		// background-color: var(--rgb-black);
+		// background: url('../../../public/assets/jumbo-img.jpg'), linear-gradient(90deg, rgb(var(--raw-blue), 50), rgb(var(--raw-black), 50));
+		// background-blend-mode: overlay;
+		// background-position: center;
+		// background-size: cover;
+		// background-attachment: fixed;
+
+		&_header {
+			position: sticky;
+			position: -webkit-sticky;
+			top: var(--navbar-height);
+			height: calc(100vh - var(--navbar-height));
+			align-content: center;
+			// color: var(--rgb-white);
+		}
+
+		&>ul>li {
+			position: relative;
+			align-content: center;
+			padding: 4vw;
+			margin: 4vw 0;
+			height: calc(100vh - var(--navbar-height) - 16vw);
+			// background-color: rgb(var(--raw-white), 1);
+			// backdrop-filter: blur(10px);
+			// border-radius: 2rem;
+		}
+
+		h3 {
+			margin-bottom: 1rem;
+		}
+
+		@media screen and (max-width:  bp.$screenxl) {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			width: 100%;
+
+			&_header {
+				position: relative;
+				top: auto;
+				height: fit-content;
+			}
+
+			&>ul>li {
+				height: fit-content;
+			}
+		}
+	}
+}

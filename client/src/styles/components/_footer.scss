@@ -1,3 +1,5 @@
+@use '../globals/breakpoints' as bp;
+
 $padding : 8vw;
 
 footer {
@@ -18,7 +20,7 @@ footer {
 			opacity: 0.7;
 			margin-bottom: 3rem;
 
-			@media screen and (max-width: 1200px) {
+			@media screen and (max-width: bp.$screenxl) {
 				margin-bottom: 1rem;
 			}
 		}
@@ -49,12 +51,12 @@ footer {
 		}
 	}
 
-	@media screen and (max-width: 1200px) {
+	@media screen and (max-width: bp.$screenxl) {
 		grid-template-columns: 1fr 1fr;
 		grid-template-rows: auto;
 	}
 
-	@media screen and (max-width: 768px) {
+	@media screen and (max-width: bp.$screenmd) {
 		display: flex;
 		flex-direction: column;
 	}

@@ -1,0 +1,141 @@
+@use './mixins';
+@use '../globals/breakpoints' as bp;
+
+.expertiseDetails {
+	display: flex;
+	flex-direction: column;
+
+	&--header {
+		@include mixins.section;
+
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
+
+		&_backLink {
+			display: flex;
+			flex-direction: row;
+			gap: 16px;
+			align-items: center;
+			margin-bottom: 1rem;
+			width: fit-content;
+		}
+
+		&_hod {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			gap: 1rem;
+			width: fit-content;
+
+			&_potrait {
+				width: 70px;
+				height: 70px;
+				border-radius: 50%;
+				border: 1px solid;
+			}
+
+			&_name {
+				margin-bottom: 3px;
+			}
+		}
+	}
+
+	&--body {
+		@include mixins.section;
+		padding-left: 24vw;
+		padding-right: 24vw;
+		text-align: justify;
+
+		@media screen and (max-width:  bp.$screenxl) {
+			padding-left: 12vw;
+			padding-right: 12vw;
+		}
+
+	}
+}
+
+.expertise {
+	@include mixins.section;
+
+	&--header {
+		@include mixins.header;
+	}
+
+	&--list {
+		display: grid;
+		grid-template:
+			'no	category	.'
+			'.	tags		desc';
+		grid-template-columns: auto 1fr 1fr;
+		grid-template-rows: auto;
+		column-gap: 4vw;
+		row-gap: 1rem;
+		padding: 3rem;
+		border-top: 1px solid rgba(0, 0, 0, 0.2);
+
+		&_no {
+			grid-area: no;
+		}
+
+		&_category {
+			grid-area: category;
+		}
+
+		&_tags {
+			grid-area: tags;
+
+			&_skeleton {
+				display: inline-block;
+				padding: 0.5rem 1rem;
+				border-radius: 999px !important;
+			}
+
+			li {
+				display: inline-block;
+				margin: 0 1rem 1rem 0;
+
+				a {
+					display: inline-block;
+					padding: 0.5rem 1rem;
+					border-radius: 999px;
+					border: 1px solid var(--rgb-black);
+				}
+			}
+		}
+
+		&_desc {
+			grid-area: desc;
+			display: flex;
+			flex-direction: column;
+			gap: 6rem;
+
+			:last-child {
+				width: max-content;
+				align-self: self-end;
+			}
+		}
+
+		@media screen and (max-width:  bp.$screenxl) {
+			grid-template:
+				'no	category'
+				'.	tags'
+				'. desc';
+			grid-template-columns: auto 1fr;
+			grid-template-rows: auto;
+
+			&_desc {
+				&>p {
+					display: none;
+				}
+			}
+		}
+
+		@media screen and (max-width:  bp.$screenlg) {
+			column-gap: 1rem;
+			row-gap: 1rem;
+			padding: 3rem 1rem;
+		}
+	}
+}

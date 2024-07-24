@@ -1,13 +1,19 @@
+@use '../globals/breakpoints' as bp;
+
 @mixin section() {
 	padding: 8vw 12vw;
 	border-top: 1px solid rgba(0, 0, 0, 0.2);
+
+	@media screen and (min-width:  bp.$screenxxl) {
+		padding: 4vw 24vw;
+	}
 }
 
 @mixin header() {
 	width: 60%;
 	margin-bottom: 5rem;
 
-	@media screen and (max-width: 1200px) {
+	@media screen and (max-width:  bp.$screenxl) {
 		width: 100%;
 		margin-bottom: 3rem;
 	}

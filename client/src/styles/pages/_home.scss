@@ -1,4 +1,5 @@
 @use './mixins';
+@use '../globals/breakpoints' as bp;
 
 .hero {
 	@include mixins.section;
@@ -43,7 +44,7 @@
 		place-self: end center;
 	}
 
-	@media screen and (max-width: 1200px) {
+	@media screen and (max-width: bp.$screenxl) {
 		height: auto;
 		grid-template:
 			"a a"
@@ -93,7 +94,7 @@
 			}
 		}
 
-		@media screen and (max-width: 922px) {
+		@media screen and (max-width: bp.$screenlg) {
 			grid-template-columns: repeat(2, 1fr);
 			grid-template-rows: repeat(2, auto);
 			gap: 3rem;
@@ -128,7 +129,7 @@
 		text-justify: inter-word;
 	}
 
-	@media screen and (max-width: 992px) {
+	@media screen and (max-width: bp.$screenlg) {
 		display: flex;
 		flex-direction: column;
 
@@ -187,7 +188,7 @@
 		}
 	}
 
-	@media screen and (max-width: 992px) {
+	@media screen and (max-width: bp.$screenlg) {
 		&--body {
 			display: flex;
 			flex-direction: column;
@@ -257,7 +258,7 @@
 		height: fit-content;
 	}
 
-	@media screen and (max-width: 992px) {
+	@media screen and (max-width: bp.$screenlg) {
 		display: flex;
 		flex-direction: column;
 

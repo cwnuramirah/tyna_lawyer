@@ -1,16 +1,16 @@
-@import './breakpoints';
+@use './breakpoints';
 
 @mixin fluid-type($font-min, $font-max) {
 	// Min value
 	font-size: #{$font-min}px;
 
 	// Preferred value between the minimum and maximum bound
-	@media only screen and (min-width: #{$breakpoint-sm}px) {
-		font-size: calc(#{$font-min}px + #{($font-max - $font-min)} * (100vw - #{$breakpoint-sm}px) / (#{$breakpoint-lg} - #{$breakpoint-sm}));
+	@media only screen and (min-width:  breakpoints.$screensm) {
+		font-size: calc(#{$font-min}px + #{($font-max - $font-min)} * (100vw -  breakpoints.$screensm) / (992 - 576));
 	}
 
 	// Max value
-	@media only screen and (min-width: #{$breakpoint-lg}px) {
+	@media only screen and (min-width:  breakpoints.$screenlg) {
 		font-size: #{$font-max}px;
 	}
 }
