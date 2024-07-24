@@ -11,6 +11,7 @@ import Home from './pages/Home';
 import Expertise from './pages/Expertise';
 import ExpertiseDetails from './pages/ExpertiseDetails';
 import { useSplashScreen } from './data/useSplashScreen';
+import About from './pages/About';
 
 const Layout = () => {
 
@@ -25,6 +26,9 @@ const Layout = () => {
 			<div className={visible ? 'display-content' : 'hide-content'}>
 				<Navbar />
 				<Outlet />
+				<section className='cta'>
+					<p>CTA section to be placed</p>
+				</section>
 				<Footer />
 			</div>
 		</div>
@@ -39,6 +43,10 @@ const router = createBrowserRouter([
 			{
 				path: '/',
 				element: <Home />,
+			},
+			{
+				path: '/about',
+				element: <About />,
 			},
 			{
 				path: '/expertise',
