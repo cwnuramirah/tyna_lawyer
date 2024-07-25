@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import client from '../client';
 import { useImageUrlBuilder } from '../data/useImageUrlBuilder';
+import Skeleton from 'react-loading-skeleton';
 
 const Team = () => {
 	const [teamData, setTeamData] = useState([]);
 	const { urlFor } = useImageUrlBuilder();
+	const [imageLoading, setImageLoading] = useState(true);
 
 	async function getTeamData() {
 		const res = await client.fetch(
@@ -16,19 +18,32 @@ const Team = () => {
 				}
 			`
 		)
-		.then((data) => {
-			data.map((member) => {
-				member.potrait = urlFor(member.potrait);
-				return member;
+			.then((data) => {
+				data.map((member) => {
+					member.potrait = urlFor(member.potrait);
+					return member;
+				})
+				setTeamData(data);
 			})
-			setTeamData(data);
-		})
-		.catch((err) => console.log(err))
+			.catch((err) => console.log(err))
+
+		return res;
 	}
 
 	useEffect(() => {
 		getTeamData();
 	}, [])
+
+	const teamMemberSkeletons = Array.apply(null, Array(3)).map((index) =>
+		<li key={index} className='team--list'>
+			<Skeleton className='team--list_member-image-skeleton' />
+			<div className='team--list_detail'>
+				<Skeleton width={100} />
+				<br />
+				<Skeleton width={50} />
+			</div>
+		</li>
+	)
 
 	return (
 		<main className='team'>
@@ -36,29 +51,29 @@ const Team = () => {
 				<h1>Our Diligent Team</h1>
 			</section>
 			<section >
-				{
-					teamData.length !== 0 ?
-					<ul className='team--body'>
-						{
+				<ul className='team--body'>
+					{
+						teamData.length !== 0 ?
 							teamData.map((member, index) => (
 								<li key={index} className='team--list'>
-									<figure>
-										<img src={member.potrait} alt={member.fullName} />
-										<figcaption>
-											<strong>
-												{member.fullName}
-											</strong>
-											<br />
-											<p>Associates</p>
-										</figcaption>
-									</figure>
+									<div className='team--list_image' style={{ display: imageLoading ? "none" : "flex" }}>
+										<img src={member.potrait} alt={member.fullName}
+											onLoad={() => setImageLoading(false)} />
+									</div>
+									<Skeleton className={'team--list_member-image-skeleton'} style={{ display: imageLoading ? "flex" : "none" }} />
+									<div className='team--list_detail'>
+										<strong>
+											{member.fullName}
+										</strong>
+										<br />
+										<p>Associates</p>
+									</div>
 								</li>
 							))
-						}
-					</ul>
-					:
-					<p>Getting team...</p>
-				}
+							:
+							teamMemberSkeletons
+					}
+				</ul>
 			</section>
 		</main>
 	)

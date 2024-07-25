@@ -15,19 +15,39 @@
 	&--body {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
+		width: calc(100vw - 16vw);
 	}
 
 	&--list {
-		img {
+		margin: 2rem;
+
+		&_image {
+			aspect-ratio: 1/1;
 			width: 100%;
 			border: 1px solid var(--rgb-black);
+			margin-bottom: 1rem;
+			//flex to match aspect ratio;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			img {
+				height: 100%;
+				width: 100%;
+				object-fit: cover;
+			}
+		}
+
+		&_member-image-skeleton {
+			aspect-ratio: 1/1;
 			margin-bottom: 1rem;
 		}
 	}
 
-	@media screen and (max-width: bp.$screenlg){
+	@media screen and (max-width: bp.$screenlg) {
 		&--body {
 			grid-template-columns: repeat(2, 1fr);
+			grid-template-columns: repeat(auto, 1fr);
 		}
 	}
 
@@ -35,12 +55,6 @@
 		&--body {
 			display: flex;
 			flex-direction: column;
-		}
-
-		&--list {
-			img {
-				width: 70%;
-			}
 		}
 	}
 }

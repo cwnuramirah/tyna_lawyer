@@ -9,14 +9,14 @@ export const usePartnerData = () => {
 	async function getPartnerData() {
 
 		const res = await client.fetch(
-			`*[_type == 'team' && roleGroup == '1']
-			{
-				_id,
-				fullName,
-				role,
-				'practiceArea': practiceArea[]->practice,
-				'potrait': potrait.asset._ref
-			}[0...3]
+			`
+				*[_type == 'team' && roleGroup == '1']{
+						_id,
+						fullName,
+						role,
+						'practiceArea': practiceArea[]->practice,
+						'potrait': potrait.asset._ref
+					}[0...3]
 			`
 		)
 			.then((data) => {

@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import { Check } from 'react-feather';
 // import client from '../client';
 // import BlockContent from '@sanity/block-content-to-react';
 
@@ -38,34 +39,44 @@ const About = () => {
 			<section className='about--principles'>
 				<div className='about--principles_header'>
 					<h2>Our Central Principles</h2>
-					</div>
-				
+				</div>
+
 				<ul>
 					<li>
-						<h3 className=''>Client-Centric Solutions</h3>
-						<p>
-							Beyond expertise, we're committed to understanding your unique needs and crafting
-							tailored solutions. With clear communication and proactive strategies, we ensure your
-							peace of mind every step of the way.
-						</p>
+						<h3><Check /></h3>
+						<div>
+							<h3 className=''>Client-Centric Solutions</h3>
+							<p className='text--long'>
+								Beyond expertise, we're committed to understanding your unique needs and crafting
+								tailored solutions. With clear communication and proactive strategies, we ensure your
+								peace of mind every step of the way.
+							</p>
+						</div>
 					</li>
 					<li>
-						<h3 className=''>Uncompromising Integrity.</h3>
-						<p>
-							At Taufiq Yong & Associates, integrity is not just a goal—it’s our foundation.
-							We uphold the highest ethical standards, ensuring transparent, trustworthy, and
-							accountable legal services for every client. Choose a firm that prioritizes your
-							trust and delivers results with unwavering integrity.
-						</p>
+						<h3><Check /></h3>
+						<div>
+							<h3 className=''>Uncompromising Integrity.</h3>
+							<p className='text--long'>
+								At Taufiq Yong & Associates, integrity is not just a goal—it’s our foundation.
+								We uphold the highest ethical standards, ensuring transparent, trustworthy, and
+								accountable legal services for every client. Choose a firm that prioritizes your
+								trust and delivers results with unwavering integrity.
+							</p>
+						</div>
 					</li>
 					<li>
-						<h3 className=''>Technology-Driven Approach.</h3>
-						<p>
-							To stay agile in an increasingly hectic world, we manage all our
-							documents and projects using leading-edge technology. Our commitment
-							to bringing value to our clients is evident in how we constantly
-							innovate to achieve greater productivity. We pass on these benefits
-							to our clients who are assured to receive prompt and efficient services, always.</p>
+						<h3><Check /></h3>
+						<div>
+							<h3 className=''>Technology-Driven Approach.</h3>
+							<p className='text--long'>
+								To stay agile in an increasingly hectic world, we manage all our
+								documents and projects using leading-edge technology. Our commitment
+								to bringing value to our clients is evident in how we constantly
+								innovate to achieve greater productivity. We pass on these benefits
+								to our clients who are assured to receive prompt and efficient services, always.</p>
+						</div>
+
 					</li>
 				</ul>
 			</section>

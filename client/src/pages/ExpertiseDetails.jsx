@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom'
 import BlockContent from '@sanity/block-content-to-react';
 import client from '../client';
 import { useImageUrlBuilder } from '../data/useImageUrlBuilder';
+import Skeleton from 'react-loading-skeleton';
 
 const ExpertiseDetails = () => {
 	const { expertiseSlug } = useParams();
@@ -36,31 +37,51 @@ const ExpertiseDetails = () => {
 		console.log(details)
 	}, [])
 
+	const headerSkeleton =
+		<section className='expertiseDetails--header'>
+			<Skeleton width={200} />
+
+			<h1 style={{ width: '36vw' }}><Skeleton /></h1>
+			<div className='expertiseDetails--header_hod'>
+				<Skeleton className='expertiseDetails--header_hod_potrait' circle={true} width={70} style={{ border: 'none' }} />
+				<div>
+					<Skeleton className='expertiseDetails--header_hod_name' width={200} />
+					<Skeleton width={100} />
+				</div>
+			</div>
+		</section>
+
 	return (
 		<main className='expertiseDetails'>
-			<section className='expertiseDetails--header'>
-				<Link to={-1} className='expertiseDetails--header_backLink'>
-					<ArrowLeft />
-					<p>Home / Expertise /</p>
-				</Link>
-				<h1>{details["practice"]}</h1>
-				<div className='expertiseDetails--header_hod'>
-					<img src={details['headOfDepPotrait']} alt='Head Of department' className='expertiseDetails--header_hod_potrait' />
-					<div>
-						<p className='expertiseDetails--header_hod_name'><strong>{details['headOfDepName']}</strong></p>
-						<p>Head of Department</p>
-					</div>
-				</div>
-			</section>
+			{
+				Object.keys(details).length !== 0 ?
+					<section className='expertiseDetails--header'>
+						<Link to={-1} className='expertiseDetails--header_backLink'>
+							<ArrowLeft />
+							<p>Home / Expertise /</p>
+						</Link>
+						<h1>{details["practice"]}</h1>
+						<div className='expertiseDetails--header_hod'>
+							<img src={details['headOfDepPotrait']} alt='Head Of department' className='expertiseDetails--header_hod_potrait' />
+							<div>
+								<p className='expertiseDetails--header_hod_name'><strong>{details['headOfDepName']}</strong></p>
+								<p>Head of Department</p>
+							</div>
+						</div>
+					</section>
+					:
+					headerSkeleton
+			}
 			<section className='expertiseDetails--body'>
 				{
 					Object.keys(details).length !== 0 ?
+
 						<div className='text--long'>
 							<BlockContent blocks={details["content"]} />
 						</div>
-						: <p>Loading contents...</p>
+						:
+						<Skeleton count={10} className='text--long'/>
 				}
-
 			</section>
 		</main>
 	)
