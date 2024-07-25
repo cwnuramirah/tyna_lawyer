@@ -7,6 +7,10 @@
 	@media screen and (min-width:  bp.$screenxxl) {
 		padding: 4vw 24vw;
 	}
+
+	@media screen and (max-width: bp.$screensm){
+		padding: 8vw 6vw;
+	}
 }
 
 @mixin header() {

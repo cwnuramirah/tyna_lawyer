@@ -48,6 +48,7 @@ html, body, p, .text--sm {
 
 .text--long {
 	line-height: 1.7;
+	text-align: justify;
 }
 
 a {
@@ -59,4 +60,8 @@ ul {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
+}
+
+svg {
+	flex-shrink: 0;
 }
