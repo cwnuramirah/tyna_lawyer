@@ -13,7 +13,7 @@ import ExpertiseDetails from './pages/ExpertiseDetails';
 import { useSplashScreen } from './data/useSplashScreen';
 import About from './pages/About';
 import Team from './pages/Team';
-import Articles from './pages/Articles';
+import Blog from './pages/Blog';
 
 const Layout = () => {
 
@@ -64,7 +64,7 @@ const router = createBrowserRouter([
 			},
 			{
 				path: '/articles',
-				element: <Articles />
+				element: <Blog />
 			}
 		]
 	}
