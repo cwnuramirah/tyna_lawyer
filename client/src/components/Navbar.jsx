@@ -22,7 +22,7 @@ const Navbar = () => {
 					<li><NavLink to="/about" className={activeLink}>About</NavLink></li>
 					<li><NavLink to="/expertise" className={activeLink}>Expertise</NavLink></li>
 					<li><NavLink to="/team" className={activeLink}>Team</NavLink></li>
-					<li><NavLink to="/" className={activeLink}>Articles</NavLink></li>
+					<li><NavLink to="/articles" className={activeLink}>Articles</NavLink></li>
 					<li><button className='btn btn-primary'>Contact Us</button></li>
 				</ul>
 			</nav>

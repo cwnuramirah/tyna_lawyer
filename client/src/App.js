@@ -13,6 +13,7 @@ import ExpertiseDetails from './pages/ExpertiseDetails';
 import { useSplashScreen } from './data/useSplashScreen';
 import About from './pages/About';
 import Team from './pages/Team';
+import Articles from './pages/Articles';
 
 const Layout = () => {
 
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
 			{
 				path: '/team',
 				element: <Team />
+			},
+			{
+				path: '/articles',
+				element: <Articles />
 			}
 		]
 	}
