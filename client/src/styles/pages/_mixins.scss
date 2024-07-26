@@ -1,5 +1,13 @@
 @use '../globals/breakpoints' as bp;
 
+$widthUnit: 8vw;
+
+:root {
+	--section-h-padding-reg: 12vw;
+	--section-h-padding-xxl: 24vw;
+	--section-h-padding-sm: 8vw;
+}
+
 @mixin section() {
 	padding: 8vw 12vw;
 	border-top: 1px solid rgba(0, 0, 0, 0.2);
@@ -9,7 +17,7 @@
 	}
 
 	@media screen and (max-width: bp.$screensm){
-		padding: 8vw 6vw;
+		padding: 8vw;
 	}
 }
 

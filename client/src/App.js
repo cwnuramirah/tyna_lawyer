@@ -14,6 +14,7 @@ import { useSplashScreen } from './data/useSplashScreen';
 import About from './pages/About';
 import Team from './pages/Team';
 import Blog from './pages/Blog';
+import BlogPost from './pages/BlogPost';
 
 const Layout = () => {
 
@@ -63,9 +64,13 @@ const router = createBrowserRouter([
 				element: <Team />
 			},
 			{
-				path: '/articles',
+				path: '/blog',
 				element: <Blog />
-			}
+			},
+			{
+				path: '/blog/:postSlug',
+				element: <BlogPost />
+			},
 		]
 	}
 ])
