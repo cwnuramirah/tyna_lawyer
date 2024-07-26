@@ -43,7 +43,7 @@ html, body, p, .text--sm {
 }
 
 .text--xs, small {
-    @include fluid-type(12, 14);
+    @include fluid-type(8, 12);
 }
 
 .text--long {

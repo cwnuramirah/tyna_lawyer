@@ -1,23 +1,42 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Skeleton from 'react-loading-skeleton'
 import { Link } from 'react-router-dom'
+import client from '../client';
+import { useImageUrlBuilder } from '../data/useImageUrlBuilder';
 
-const Articles = () => {
+const Blog = () => {
+	const [postList, setPostList] = useState([]);
+	const { urlFor } = useImageUrlBuilder();
 
-	const demoPosts = Array.apply(null, Array(5)).map((index) =>
-		<li className='post' key={index}>
-			<p className='post_tags text--xs'>post Tags</p>
-			<Link to="/blog/trust-tightrope">
-				<div className='post_image'>
-					<img src='/assets/jumbo-img.jpg' alt='post cover' />
-				</div>
-			</Link>
-			<Link to="/blog/trust-tightrope">
-				<h4 className='post_title'>Navigating the Trust Tightrope: A Humoruos Look at Global Business Practices</h4>
-			</Link>
-			<p className='post_detail'>by Arthur Author / 26 July 2024</p>
-		</li>
-	)
+	async function getPostList() {
+		const res = await client.fetch(
+			`
+				*[_type == 'blog'] {
+					title,
+					'slug': slug.current,
+					tag,
+					category,
+					date,
+					'author': author->fullName,
+					'thumbnail': thumbnail.asset._ref,
+				}
+			`
+		)
+			.then((data) => {
+				data.map((post) => {
+					post.thumbnail = urlFor(post.thumbnail)
+					return post
+				})
+				setPostList(data);
+			})
+			.catch((err) => console.log(err))
+
+		return res;
+	}
+
+	useEffect(() => {
+		getPostList();
+	}, [])
 
 	const postsSkeleton = Array.apply(null, Array(5)).map((index) =>
 		<li className='post' key={index}>
@@ -35,11 +54,29 @@ const Articles = () => {
 			</header>
 			<section>
 				<ul className='blog--posts'>
-					{demoPosts}
+					{
+						postList.length !== 0 ?
+							postList.map((post, index) =>
+								<li className='post' key={index}>
+									<p className='post_tags text--xs'>{post.tag}</p>
+									<Link to={"/blog/" + post.slug}>
+										<div className='post_image'>
+											<img src={post.thumbnail} alt='post cover' />
+										</div>
+									</Link>
+									<Link to={"/blog/" + post.slug}>
+										<h4 className='post_title'>{post.title}</h4>
+									</Link>
+									<p className='post_detail'>by {post.author} / {post.date}</p>
+								</li>
+							)
+							:
+							postsSkeleton
+					}
 				</ul>
 			</section>
 		</main>
 	)
 }
 
-export default Articles
+export default Blog
