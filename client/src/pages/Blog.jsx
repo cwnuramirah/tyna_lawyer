@@ -5,6 +5,7 @@ import client from '../client';
 import { useImageUrlBuilder } from '../data/useImageUrlBuilder';
 
 const Blog = () => {
+	const [imageLoading, setImageLoading] = useState(true);
 	const [postList, setPostList] = useState([]);
 	const { urlFor } = useImageUrlBuilder();
 
@@ -60,10 +61,11 @@ const Blog = () => {
 								<li className='post' key={index}>
 									<p className='post_tags text--xs'>{post.tag}</p>
 									<Link to={"/blog/" + post.slug}>
-										<div className='post_image'>
-											<img src={post.thumbnail} alt='post cover' />
+										<div className='post_image' style={{ display: imageLoading ? "none" : "flex" }}>
+											<img src={post.thumbnail} alt='post cover' onLoad={() => setImageLoading(false)} />
 										</div>
 									</Link>
+									<Skeleton className='post_image' style={{ display: imageLoading ? "flex" : "none" }} />
 									<Link to={"/blog/" + post.slug}>
 										<h4 className='post_title'>{post.title}</h4>
 									</Link>
@@ -79,4 +81,4 @@ const Blog = () => {
 	)
 }
 
-export default Blog
+export default Blog;
