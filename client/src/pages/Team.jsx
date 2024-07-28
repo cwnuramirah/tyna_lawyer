@@ -34,9 +34,9 @@ const Team = () => {
 		getTeamData();
 	}, [])
 
-	const teamMemberSkeletons = Array.apply(null, Array(3)).map((index) =>
+	const teamMemberSkeletons = Array.apply(null, Array(5)).map((index) =>
 		<li key={index} className='team--list'>
-			<Skeleton className='team--list_member-image-skeleton' />
+			<Skeleton className='team--list_image' />
 			<div className='team--list_detail'>
 				<Skeleton width={100} />
 				<br />
@@ -60,7 +60,7 @@ const Team = () => {
 										<img src={member.potrait} alt={member.fullName}
 											onLoad={() => setImageLoading(false)} />
 									</div>
-									<Skeleton className={'team--list_member-image-skeleton'} style={{ display: imageLoading ? "flex" : "none" }} />
+									<Skeleton className={'team--list_image'} style={{ display: imageLoading ? "flex" : "none" }} />
 									<div className='team--list_detail'>
 										<strong>
 											{member.fullName}

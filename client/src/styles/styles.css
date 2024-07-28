@@ -100,16 +100,16 @@ html, body, p, .text--sm {
 }
 
 .text--xs, small {
-  font-size: 12px;
+  font-size: 8px;
 }
 @media only screen and (min-width: 576px) {
   .text--xs, small {
-    font-size: calc(12px + 2 * (100vw - 576px) / 416);
+    font-size: calc(8px + 4 * (100vw - 576px) / 416);
   }
 }
 @media only screen and (min-width: 992px) {
   .text--xs, small {
-    font-size: 14px;
+    font-size: 12px;
   }
 }
 
@@ -1056,7 +1056,7 @@ footer > div ul li #activeOffice {
 }
 .post_tags {
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   color: var(--rgb-blue);
 }
 .post_image {
@@ -1074,29 +1074,40 @@ footer > div ul li #activeOffice {
 }
 
 .blogpost {
-  padding: 8vw 12vw;
-  border-top: 1px solid rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  width: 100vw;
+}
+.blogpost--header {
+  padding: 8vw 12vw;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  padding-left: 24vw;
+  padding-right: 24vw;
+  background-color: var(--rgb-blue);
+  color: var(--rgb-white);
+  display: flex;
+  flex-direction: column;
 }
 @media screen and (min-width: 1920px) {
-  .blogpost {
+  .blogpost--header {
     padding: 4vw 24vw;
   }
 }
 @media screen and (max-width: 576px) {
-  .blogpost {
+  .blogpost--header {
     padding: 8vw;
   }
 }
-.blogpost--header {
-  display: flex;
-  flex-direction: column;
+.blogpost--body {
+  margin: 12vh 24vw;
+  border-top: none;
 }
 .blogpost--cover {
+  margin-left: 24vw;
+  margin-right: 24vw;
+  border-top: none;
   aspect-ratio: 16/9;
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;

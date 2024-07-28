@@ -8,14 +8,26 @@
 	align-items: center;
 	text-align: center;
 
-	&--header {
-		@include mixins.header;
-	}
-
 	&--body {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
-		width: calc(100vw - 16vw);
+		//for skeletons sizing correctly
+		width: calc(100vw - (var(--section-h-padding-reg)*2));
+
+		@media screen and (min-width: bp.$screenxxl) {
+			grid-template-columns: repeat(4, 1fr);
+			width: calc(100vw - (var(--section-h-padding-xxl)*2));
+		}
+
+		@media screen and (max-width: bp.$screenlg) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		@media screen and (max-width: bp.$screensm) {
+			display: flex;
+			flex-direction: column;
+			width: calc(100vw - (var(--section-h-padding-sm)*2));
+		}
 	}
 
 	&--list {
@@ -25,7 +37,6 @@
 			aspect-ratio: 1/1;
 			width: 100%;
 			border: 1px solid var(--rgb-black);
-			margin-bottom: 1rem;
 			//flex to match aspect ratio;
 			display: flex;
 			align-items: center;
@@ -38,23 +49,27 @@
 			}
 		}
 
-		&_member-image-skeleton {
-			aspect-ratio: 1/1;
-			margin-bottom: 1rem;
-		}
-	}
+		// &_member-image-skeleton {
+		// 	aspect-ratio: 1/1;
+		// 	margin-bottom: 1rem;
+		// }
 
-	@media screen and (max-width: bp.$screenlg) {
-		&--body {
-			grid-template-columns: repeat(2, 1fr);
-			grid-template-columns: repeat(auto, 1fr);
-		}
-	}
+		@media screen and (max-width: bp.$screensm) {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			grid-template-areas: "a b";
+			column-gap: 1rem;
+			margin: 1rem 0;
 
-	@media screen and (max-width: bp.$screenmd) {
-		&--body {
-			display: flex;
-			flex-direction: column;
+			&_image {
+				grid-area: a;
+			}
+
+			&_detail {
+				grid-area: b;
+				align-self: center;
+				text-align: left;
+			}
 		}
 	}
 }
