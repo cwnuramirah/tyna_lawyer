@@ -44,14 +44,7 @@
 
 	&--body {
 		@include mixins.section;
-		padding-left: 24vw;
-		padding-right: 24vw;
-
-		@media screen and (max-width: bp.$screenxl) {
-			padding-left: 12vw;
-			padding-right: 12vw;
-		}
-
+		@include mixins.content;
 	}
 }
 

@@ -13,7 +13,35 @@ $widthUnit: 8vw;
 	border-top: 1px solid rgba(0, 0, 0, 0.2);
 
 	@media screen and (min-width:  bp.$screenxxl) {
-		padding: 4vw 24vw;
+		padding: 4vw 20vw;
+	}
+
+	@media screen and (max-width: bp.$screensm){
+		padding: 8vw;
+	}
+}
+
+@mixin content(){
+	padding-left: 20vw;
+	padding-right: 20vw;
+
+	@media screen and (max-width: bp.$screenlg){
+		padding-left: 12vw;
+		padding-right: 12vw;
+	}
+
+	@media screen and (max-width: bp.$screensm){
+		padding: 8vw;
+	}
+}
+
+@mixin contentImage(){
+	margin-left: 20vw;
+	margin-right: 20vw;
+
+	@media screen and (max-width: bp.$screenlg){
+		margin-left: 12vw;
+		margin-right: 12vw;
 	}
 
 	@media screen and (max-width: bp.$screensm){
