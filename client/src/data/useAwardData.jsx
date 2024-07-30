@@ -20,8 +20,6 @@ export const useAwardData = () => {
 				award.awardImg = urlFor(award.awardImg);
 				return award;
 			});
-			console.log(data)
-
 			setAwardData(data);
 		})
 		.catch((err) => console.log(err));
@@ -31,7 +29,6 @@ export const useAwardData = () => {
 
 	useEffect(() => {
 		getAwardData();
-		console.log("get award data");
 	}, [])
 
 	return { awardData };

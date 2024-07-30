@@ -1168,7 +1168,7 @@ footer > div ul li #activeOffice {
 }
 @media screen and (max-width: 576px) {
   .blogpost--cover {
-    padding: 8vw;
+    margin: 8vw;
   }
 }
 .blogpost--cover img {
