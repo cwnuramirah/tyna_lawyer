@@ -1,29 +1,43 @@
 import React from 'react'
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import { Menu, X } from 'react-feather'
 
 const Navbar = () => {
 	const [expanded, setExpanded] = useState(false)
-	const onToggle = () => setExpanded(!expanded)
+	const onToggleNavMenu = () => setExpanded(!expanded);
+	function onClickNavList() {
+		if(expanded) {
+			setExpanded(!expanded)
+		}
+	}
 
 	//active page indicator using NavLink function
-	const activeLink = ({isActive}) => isActive ? "nav-link nav-link-active" : "nav-link";
+	const activeLink = ({ isActive }) => isActive ? "nav-link nav-link-active" : "nav-link";
 
 	return (
 		<header className="navbar">
-			<div className="brand">
-				<a href="/">🧩 Tetuan Taufiq</a>
+			<div className="logo">
+				<a href="/">
+					<img src='/assets/ty-signature-trans.png' alt='Taufiq Yong & Associates logo' />
+				</a>
 			</div>
 			<nav>
 				<div className={expanded ? "nav-menu" : ""}>
-					<button id="nav-btn" onClick={onToggle}>M</button>
+					<button id="nav-btn" onClick={onToggleNavMenu}>
+						{expanded ? <X /> : <Menu />}
+					</button>
 				</div>
 				<ul className={expanded ? "nav-list-expanded" : "nav-list"}>
-					<li><NavLink to="/about" className={activeLink}>About</NavLink></li>
-					<li><NavLink to="/expertise" className={activeLink}>Expertise</NavLink></li>
-					<li><NavLink to="/team" className={activeLink}>Team</NavLink></li>
-					<li><NavLink to="/blog" className={activeLink}>Articles</NavLink></li>
+					{expanded && <li><NavLink to="/" className={activeLink} onClick={onClickNavList}>Home</NavLink></li>}
+					<li><NavLink to="/about" className={activeLink} onClick={onClickNavList}>About</NavLink></li>
+					<li><NavLink to="/expertise" className={activeLink} onClick={onClickNavList}>Expertise</NavLink></li>
+					<li><NavLink to="/team" className={activeLink} onClick={onClickNavList}>Team</NavLink></li>
+					<li><NavLink to="/blog" className={activeLink} onClick={onClickNavList}>Articles</NavLink></li>
 					<li><button className='btn btn-primary'>Contact Us</button></li>
+					{expanded && <li>
+						<img src='/assets/ty-signature-trans.png' alt='Taufiq Yong & Associates logo' style={{opacity: '0.1'}}/>
+					</li>}
 				</ul>
 			</nav>
 		</header>

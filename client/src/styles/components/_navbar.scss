@@ -41,6 +41,15 @@ main {
 	gap: 2rem;
 }
 
+.logo {
+	height: 3.5rem;
+	width: auto;
+
+	&>a>img {
+		height: 100%;
+		width: auto;
+	}
+}
 
 .nav-link {
 	display: inline-block;
@@ -60,9 +69,10 @@ main {
 	display: none;
 }
 
-@media screen and (max-width:  bp.$screenmd) {
+@media screen and (max-width: bp.$screenmd) {
 	#nav-btn {
 		display: block;
+		border: none;
 	}
 
 	.nav-menu {
