@@ -29,9 +29,6 @@ const Layout = () => {
 			<div className={visible ? 'display-content' : 'hide-content'}>
 				<Navbar />
 				<Outlet />
-				<section className='cta'>
-					<p>CTA section to be placed</p>
-				</section>
 				<Footer />
 			</div>
 		</div>

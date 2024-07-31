@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ArrowRight} from 'react-feather'
+import { ArrowRight, CornerRightUp } from 'react-feather'
 
 const officeData = [
 	{
@@ -40,31 +40,38 @@ const Footer = () => {
 	const findUs = officeData.map((item, index) => (
 		<li key={index} onClick={() => onSwitch(index)} >
 			<h4>{item['office']}</h4>
-			<ArrowRight id={index === office ? 'activeOffice' : ''}/>
+			<ArrowRight id={index === office ? 'activeOffice' : ''} />
 		</li>
 	))
 
 	return (
 		<footer>
-			<div>
-				<p>Find Us</p>
-				<ul>
-					{findUs}
-				</ul>
+			<div className='cta'>
+				<h1><u>Talk to expert about your case now</u></h1>
+				<p>Click <CornerRightUp /> to fill in contact form</p>
 			</div>
-			<div>
-				<p>Phone / Email</p>
-				<ul>
-					<li><h4>{phone}</h4></li>
-					<li><h4>{email}</h4></li>
-				</ul>
+			<div className='findUs'>
+				<div>
+					<p>Find Us</p>
+					<ul>
+						{findUs}
+					</ul>
+				</div>
+				<div>
+					<p>Phone / Email</p>
+					<ul>
+						<li><h4>{phone}</h4></li>
+						<li><h4>{email}</h4></li>
+					</ul>
+				</div>
+				<div>
+					<p>Address</p>
+					<address>
+						<h4>{address}</h4>
+					</address>
+				</div>
 			</div>
-			<div>
-				<p>Address</p>
-				<address>
-					<h4>{address}</h4>
-				</address>
-			</div>
+			<div className='disclaimer'>Work of <a href='https://www.github.com/cwnuramirah'><u>Che Wan Nuramirah</u></a>. Read <u>disclaimer</u>.</div>
 		</footer>
 	)
 }
