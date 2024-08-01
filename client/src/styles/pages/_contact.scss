@@ -1,0 +1,38 @@
+@use './mixins';
+
+.contact {
+	&-feedback {
+		@include mixins.section;
+		height: calc(100vh - var(--navbar-height));
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	&>form {
+		@include mixins.section;
+		@include mixins.content;
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+
+		&>div {
+			display: flex;
+			flex-direction: column;
+
+			&>label {
+				font-weight: bold;
+
+			}
+
+			&>input, &>textarea {
+				padding: 0.8rem 1rem;
+			}
+
+			&>textarea {
+				resize: none;
+				height: 200px;
+			}
+		}
+	}
+}

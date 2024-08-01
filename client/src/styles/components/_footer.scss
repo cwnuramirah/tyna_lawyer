@@ -26,6 +26,10 @@ footer {
 
 	&>h1 {
 		margin: 0;
+
+		&>u>a {
+			color: var(--rgb-white) !important;
+		}
 	}
 
 	&>p {

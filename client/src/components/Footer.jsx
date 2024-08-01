@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { ArrowRight, CornerRightUp } from 'react-feather'
+import { Link, useLocation } from 'react-router-dom'
 
 const officeData = [
 	{
@@ -29,7 +30,7 @@ const officeData = [
 ]
 
 const Footer = () => {
-
+	const location = useLocation();
 	const [office, setOffice] = useState(0)
 	const onSwitch = (index) => setOffice(index)
 
@@ -46,8 +47,8 @@ const Footer = () => {
 
 	return (
 		<footer>
-			<div className='cta'>
-				<h1><u>Talk to expert about your case now</u></h1>
+			<div className='cta' style={{display: location.pathname === '/contact' ? 'none' : 'flex'}}>
+				<h1><u><Link to="/contact" >Talk to expert about your case now</Link></u></h1>
 				<p>Click <CornerRightUp /> to fill in contact form</p>
 			</div>
 			<div className='findUs'>

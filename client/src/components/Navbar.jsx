@@ -34,7 +34,7 @@ const Navbar = () => {
 					<li><NavLink to="/expertise" className={activeLink} onClick={onClickNavList}>Expertise</NavLink></li>
 					<li><NavLink to="/team" className={activeLink} onClick={onClickNavList}>Team</NavLink></li>
 					<li><NavLink to="/blog" className={activeLink} onClick={onClickNavList}>Articles</NavLink></li>
-					<li><button className='btn btn-primary'>Contact Us</button></li>
+					<li><NavLink to="/contact" className='btn btn-primary' onClick={onClickNavList}>Contact Us</NavLink></li>
 					{expanded && <li>
 						<img src='/assets/ty-signature-trans.png' alt='Taufiq Yong & Associates logo' style={{opacity: '0.1'}}/>
 					</li>}

@@ -15,6 +15,7 @@ import About from './pages/About';
 import Team from './pages/Team';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
+import Contact from './pages/Contact';
 
 const Layout = () => {
 
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
 				path: '/blog/:postSlug',
 				element: <BlogPost />
 			},
+			{
+				path: '/contact',
+				element: <Contact />
+			}
 		]
 	}
 ])
