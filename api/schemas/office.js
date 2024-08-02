@@ -10,13 +10,13 @@ export default {
 			validation: rule => rule.required(),
 		},
 		{
-			name: 'tel',
+			name: 'phone',
 			type: 'string',
 			title: 'OFFICE PHONE NUMBER',
 			validation: rule => rule.required(),
 		},
 		{
-			name: 'tel',
+			name: 'email',
 			type: 'string',
 			title: 'OFFICE EMAIL ADDRESS',
 			validation: rule => rule.required(),
