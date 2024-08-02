@@ -3,6 +3,7 @@ import team from "./team";
 import about from "./about";
 import blog from "./blog";
 import award from "./award";
+import office from "./office";
 
 export const schemaTypes = [
 	expertise,
@@ -10,4 +11,5 @@ export const schemaTypes = [
 	about,
 	blog,
 	award,
+	office,
 ]

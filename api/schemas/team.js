@@ -7,6 +7,7 @@ export default {
 			name: 'fullName',
 			title: 'FULL NAME',
 			type: 'string',
+			validation: rule => rule.required(),
 		},
 		{
 			name: 'potrait',
@@ -14,7 +15,8 @@ export default {
 			type: 'image',
 			options: {
 				hotspot: true,
-			}
+			},
+			validation: rule => rule.required(),
 		},
 
 		{
@@ -27,6 +29,7 @@ export default {
 					to: [{ type: 'expertise' }]
 				}
 			],
+			validation: rule => rule.required(),
 		},
 		{
 			name: 'roleGroup',
@@ -40,7 +43,8 @@ export default {
 					{ title: 'Core Team', value: '4' }
 				],
 				layout: 'radio'
-			}
+			},
+			validation: rule => rule.required(),
 		},
 		{
 			name: 'role',

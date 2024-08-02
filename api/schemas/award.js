@@ -8,7 +8,8 @@ export default {
 			type: 'image',
 			title: 'AWARD IMAGE',
 			description: 'Badge/Logo of the recognition to be display',
-			options: { hotspot: true }
+			options: { hotspot: true },
+			validation: rule => rule.required(),
 		},
 		{
 			name: 'awardName',
@@ -22,6 +23,7 @@ export default {
 			title: 'AWARD/ACCOLADES ISSUED DATE',
 			description: 'When did the firm received this recognition?',
 			options: { dateFormat: 'MM-YYYY' },
+			validation: rule => rule.required(),
 		},
 		{
 			name: 'awardDesc',
