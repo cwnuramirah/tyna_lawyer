@@ -68,7 +68,7 @@ const BlogPost = () => {
 							<p className='post_detail'>by {post['author']} / {post['date']}</p>
 						</header>
 						<section className='blogpost--body'>
-							<SanityBlockContent blocks={post['content']} className='text--long' />
+							<SanityBlockContent blocks={post['content']}/>
 						</section>
 						<section className='blogpost--cover' style={{ display: imageLoading ? "none" : "flex" }}>
 							<img src={post['thumbnail']} alt={post['title']}

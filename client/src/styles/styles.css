@@ -383,6 +383,9 @@ footer {
 .cta > h1 {
   margin: 0;
 }
+.cta > h1 > u > a {
+  color: var(--rgb-white) !important;
+}
 .cta > p {
   opacity: 0.7;
 }
@@ -887,6 +890,35 @@ footer {
     padding: 8vw;
   }
 }
+.expertiseDetails--body > div h1,
+.expertiseDetails--body > div h2,
+.expertiseDetails--body > div h3,
+.expertiseDetails--body > div h4 {
+  margin-top: 2.4rem;
+  margin-bottom: 0.4rem;
+}
+.expertiseDetails--body > div p {
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+.expertiseDetails--body > div a {
+  color: var(--rgb-blue) !important;
+  text-decoration: underline !important;
+  cursor: auto;
+}
+.expertiseDetails--body > div ul {
+  margin: 1.6rem;
+  list-style-type: disc;
+}
+.expertiseDetails--body > div ul li {
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+.expertiseDetails--body > div ul li::marker {
+  font-size: 1.2em;
+  color: var(--rgb-blue);
+}
 @media screen and (max-width: 992px) {
   .expertiseDetails--body {
     padding-left: 12vw;
@@ -1146,6 +1178,35 @@ footer {
     padding: 8vw;
   }
 }
+.blogpost--header > div h1,
+.blogpost--header > div h2,
+.blogpost--header > div h3,
+.blogpost--header > div h4 {
+  margin-top: 2.4rem;
+  margin-bottom: 0.4rem;
+}
+.blogpost--header > div p {
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+.blogpost--header > div a {
+  color: var(--rgb-blue) !important;
+  text-decoration: underline !important;
+  cursor: auto;
+}
+.blogpost--header > div ul {
+  margin: 1.6rem;
+  list-style-type: disc;
+}
+.blogpost--header > div ul li {
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+.blogpost--header > div ul li::marker {
+  font-size: 1.2em;
+  color: var(--rgb-blue);
+}
 @media screen and (max-width: 992px) {
   .blogpost--header {
     padding-left: 12vw;
@@ -1173,6 +1234,35 @@ footer {
   .blogpost--body {
     padding: 8vw;
   }
+}
+.blogpost--body > div h1,
+.blogpost--body > div h2,
+.blogpost--body > div h3,
+.blogpost--body > div h4 {
+  margin-top: 2.4rem;
+  margin-bottom: 0.4rem;
+}
+.blogpost--body > div p {
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+.blogpost--body > div a {
+  color: var(--rgb-blue) !important;
+  text-decoration: underline !important;
+  cursor: auto;
+}
+.blogpost--body > div ul {
+  margin: 1.6rem;
+  list-style-type: disc;
+}
+.blogpost--body > div ul li {
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+.blogpost--body > div ul li::marker {
+  font-size: 1.2em;
+  color: var(--rgb-blue);
 }
 @media screen and (max-width: 992px) {
   .blogpost--body {
@@ -1210,4 +1300,96 @@ footer {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.contact-feedback {
+  padding: 8vw 12vw;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  height: calc(100vh - var(--navbar-height));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+@media screen and (min-width: 1920px) {
+  .contact-feedback {
+    padding: 4vw 20vw;
+  }
+}
+@media screen and (max-width: 576px) {
+  .contact-feedback {
+    padding: 8vw;
+  }
+}
+.contact > form {
+  padding: 8vw 12vw;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  padding-left: 20vw;
+  padding-right: 20vw;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+@media screen and (min-width: 1920px) {
+  .contact > form {
+    padding: 4vw 20vw;
+  }
+}
+@media screen and (max-width: 576px) {
+  .contact > form {
+    padding: 8vw;
+  }
+}
+.contact > form > div h1,
+.contact > form > div h2,
+.contact > form > div h3,
+.contact > form > div h4 {
+  margin-top: 2.4rem;
+  margin-bottom: 0.4rem;
+}
+.contact > form > div p {
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+.contact > form > div a {
+  color: var(--rgb-blue) !important;
+  text-decoration: underline !important;
+  cursor: auto;
+}
+.contact > form > div ul {
+  margin: 1.6rem;
+  list-style-type: disc;
+}
+.contact > form > div ul li {
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+.contact > form > div ul li::marker {
+  font-size: 1.2em;
+  color: var(--rgb-blue);
+}
+@media screen and (max-width: 992px) {
+  .contact > form {
+    padding-left: 12vw;
+    padding-right: 12vw;
+  }
+}
+@media screen and (max-width: 576px) {
+  .contact > form {
+    padding: 8vw;
+  }
+}
+.contact > form > div {
+  display: flex;
+  flex-direction: column;
+}
+.contact > form > div > label {
+  font-weight: bold;
+}
+.contact > form > div > input, .contact > form > div > textarea {
+  padding: 0.8rem 1rem;
+}
+.contact > form > div > textarea {
+  resize: none;
+  height: 200px;
 }/*# sourceMappingURL=styles.css.map */

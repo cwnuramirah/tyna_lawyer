@@ -75,7 +75,7 @@ const ExpertiseDetails = () => {
 			<section className='expertiseDetails--body'>
 				{
 					Object.keys(details).length !== 0 ?
-						<BlockContent blocks={details["content"]} className='text--long' />
+						<BlockContent blocks={details["content"]}/>
 						:
 						<Skeleton count={10} className='text--long' />
 				}
