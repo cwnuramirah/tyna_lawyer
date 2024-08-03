@@ -20,6 +20,33 @@
 		border-top: none;
 	}
 
+	&--share {
+		@include mixins.section;
+		@include mixins.contentImage;
+		display: flex;
+		flex-direction: row;
+		align-self: flex-end;
+		gap: 1rem;
+		margin-top: 1rem;
+		margin-bottom: 1rem;
+		padding: 1rem 2rem;
+		width: fit-content;
+		align-items: center;
+		border: 1px solid rgba(0, 0, 0, 0.2);
+		color: rgba(var(--raw-black), 0.5);
+
+		&>ul {
+			display: flex;
+			flex-direction: row;
+			gap: 1rem;
+			align-items: center;
+
+			svg:hover {
+				color: var(--rgb-black)
+			}
+		}
+	}
+
 	&--cover {
 		@include mixins.contentImage;
 		border-top: none;

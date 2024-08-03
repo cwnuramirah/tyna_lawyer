@@ -4,6 +4,7 @@ import client from '../client';
 import SanityBlockContent from '@sanity/block-content-to-react';
 import { useImageUrlBuilder } from '../data/useImageUrlBuilder';
 import Skeleton from 'react-loading-skeleton';
+import { Twitter, Facebook, Link} from 'react-feather';
 
 const BlogPost = () => {
 	const [post, setPost] = useState({});
@@ -58,6 +59,16 @@ const BlogPost = () => {
 			<Skeleton style={{ width: '50%' }} />
 		</section>
 
+	const sharePost =
+	<section className='blogpost--share'>
+		Share this post: 
+		<ul>
+			<li><Twitter /></li>
+			<li><Facebook /></li>
+			<li><Link /></li>
+		</ul>
+	</section>
+
 	return (
 		<main className='blogpost'>
 			{
@@ -67,6 +78,7 @@ const BlogPost = () => {
 							<h1 className='post_title'>{post['title']}</h1>
 							<p className='post_detail'>by {post['author']} / {post['date']}</p>
 						</header>
+						{sharePost}
 						<section className='blogpost--body'>
 							<SanityBlockContent blocks={post['content']}/>
 						</section>
@@ -75,6 +87,7 @@ const BlogPost = () => {
 								onLoad={() => setImageLoading(false)} />
 						</section>
 						<Skeleton className='blogpost--cover' style={{ display: imageLoading ? "flex" : "none", width: '50%' }} />
+						{sharePost}
 					</>
 					:
 					<>
