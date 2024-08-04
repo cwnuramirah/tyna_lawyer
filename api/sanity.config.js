@@ -1,18 +1,24 @@
-import {defineConfig} from 'sanity'
-import {deskTool} from 'sanity/desk'
-import {visionTool} from '@sanity/vision'
-import {schemaTypes} from './schemas'
+import { defineConfig } from 'sanity'
+import { structureTool } from 'sanity/structure'
+import { visionTool } from '@sanity/vision'
+import { schemaTypes } from './schemas'
+import { deskStructure } from './deskStructure'
 
 export default defineConfig({
-  name: 'default',
-  title: 'tyna_lawyer',
+	name: 'default',
+	title: 'tyna_lawyer',
 
-  projectId: 'pr9ovigi',
-  dataset: 'development',
+	projectId: 'pr9ovigi',
+	dataset: 'development',
 
-  plugins: [deskTool(), visionTool()],
+	plugins: [
+		structureTool({
+			structure: deskStructure,
+		}),
+		visionTool(),
+	],
 
-  schema: {
-    types: schemaTypes,
-  },
+	schema: {
+		types: schemaTypes,
+	},
 })

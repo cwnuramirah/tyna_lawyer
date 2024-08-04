@@ -1,7 +1,7 @@
 export default {
 	name: 'about',
 	type: 'document',
-	title: 'About Us',
+	title: 'About',
 	groups: [
 		{
 			name: 'story',
@@ -12,8 +12,8 @@ export default {
 			title: 'Principle',
 		},
 		{
-			name: 'awardGroup',
-			title: 'AWARD LIST',
+			name: 'historyGroup',
+			title: 'History',
 		}
 	],
 	fields: [
@@ -51,7 +51,37 @@ export default {
 				}
 			],
 			sortable: true,
-
+		},
+		{
+			name: 'history',
+			title: 'OUR HISTORY',
+			group: 'historyGroup',
+			type: 'array',
+			of: [
+				{
+					name: 'event',
+					type: 'object',
+					title: 'EVENT',
+					fields: [
+						{
+							name: 'title',
+							type: 'string'
+						},
+						{
+							name: 'year',
+							type: 'string',
+							title: 'YEAR OF EVENT',
+							description: 'Number in format: YYYY'
+						},
+						{
+							name: 'desc',
+							type: 'string',
+							title: 'Content'
+						},
+					]
+				}
+			],
+			sortable: true,
 		},
 	]
 }
