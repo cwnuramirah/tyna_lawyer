@@ -6,12 +6,15 @@ import client from '../client';
 import { useImageUrlBuilder } from '../data/useImageUrlBuilder';
 import Skeleton from 'react-loading-skeleton';
 import Breadcrumb from '../components/Breadcrumb';
+import ChangeDocumentTitle from '../data/changeDocumentTitle';
 
 const ExpertiseDetails = () => {
 	const { expertiseSlug } = useParams();
 
 	const [details, setDetails] = useState({});
 	const { urlFor } = useImageUrlBuilder();
+
+	ChangeDocumentTitle(details['practice'])
 
 	async function getExpertiseData() {
 		const res = await client.fetch(

@@ -6,12 +6,15 @@ import { useImageUrlBuilder } from '../data/useImageUrlBuilder';
 import Skeleton from 'react-loading-skeleton';
 import { Twitter, Facebook, Link} from 'react-feather';
 import Breadcrumb from '../components/Breadcrumb';
+import ChangeDocumentTitle from '../data/changeDocumentTitle';
 
 const BlogPost = () => {
 	const [post, setPost] = useState({});
 	const { postSlug } = useParams();
 	const { urlFor } = useImageUrlBuilder();
 	const [imageLoading, setImageLoading] = useState(true);
+
+	ChangeDocumentTitle(post['title'])
 
 	async function getPost() {
 

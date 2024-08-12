@@ -1,10 +1,13 @@
 import React from 'react';
 import { useAboutContent } from '../data/useAboutContent';
 import { useImageUrlBuilder } from '../data/useImageUrlBuilder';
+import ChangeDocumentTitle from '../data/changeDocumentTitle';
 
 const About = () => {
 	const { content } = useAboutContent();
 	const { urlFor } = useImageUrlBuilder();
+
+	ChangeDocumentTitle('About Us')
 
 	function getGridTemplate(layout) {
 		let gridTemplate = layout.replace(/-/g, `""`)
