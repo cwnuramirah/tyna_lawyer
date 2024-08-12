@@ -8,6 +8,38 @@
 
 	&>section {
 		@include mixins.section;
+		display: grid;
+
+		&>h2{
+			grid-area: T;
+			margin: 0;
+		}
+
+		&>p {
+			grid-area: C;
+			width: 100%;
+			opacity: 0.8;
+		}
+
+		.section_image {
+			grid-area: I;
+			align-self: center;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			
+			img {
+				height: 100%;
+				width: 100%;
+				object-fit: cover;
+			}
+		}
+
+		@media screen and (max-width: bp.$screenxl) {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
 	}
 
 	&--principles {
