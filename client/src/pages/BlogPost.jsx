@@ -5,6 +5,7 @@ import SanityBlockContent from '@sanity/block-content-to-react';
 import { useImageUrlBuilder } from '../data/useImageUrlBuilder';
 import Skeleton from 'react-loading-skeleton';
 import { Twitter, Facebook, Link} from 'react-feather';
+import Breadcrumb from '../components/Breadcrumb';
 
 const BlogPost = () => {
 	const [post, setPost] = useState({});
@@ -71,6 +72,11 @@ const BlogPost = () => {
 
 	return (
 		<main className='blogpost'>
+			<Breadcrumb crumbs={
+				[
+					{link: '/blog', name: 'Blog'},
+					{link: `/${postSlug}`, name: Object.keys(post).length !== 0 ? post["title"] : ""}
+				]}/>
 			{
 				Object.keys(post).length !== 0 ?
 					<>
