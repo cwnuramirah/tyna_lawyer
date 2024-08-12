@@ -1,3 +1,10 @@
+const ROLE_GROUP = [
+	{ title: 'Partner', value: '1' },
+	{ title: 'Senior Associates', value: '2' },
+	{ title: 'Associates', value: '3' },
+	{ title: 'Core Team', value: '4' }
+]
+
 export default {
 	name: 'team',
 	type: 'document',
@@ -36,12 +43,7 @@ export default {
 			title: 'ROLE GROUP',
 			type: 'string',
 			options: {
-				list: [
-					{ title: 'Partner', value: '1' },
-					{ title: 'Senior Associates', value: '2' },
-					{ title: 'Associates', value: '3' },
-					{ title: 'Core Team', value: '4' }
-				],
+				list: ROLE_GROUP,
 				layout: 'radio'
 			},
 			validation: rule => rule.required(),
@@ -60,5 +62,20 @@ export default {
 			row: 20,
 			validation: Rule => Rule.max(750).error('Too wordy. Please make it less than 750'),
 		},
-	]
+	],
+	preview: {
+		select: {
+			title: 'fullName',
+			roleGroup: 'roleGroup',
+			media: 'potrait'
+		},
+		prepare: ({title, roleGroup, media}) => {
+			const role = roleGroup && ROLE_GROUP.flatMap(option => option.value === roleGroup ? [option.title] : [])
+			return {
+				title: title,
+				subtitle: roleGroup ? `${role}` : 'No role group selected',
+				media: media,
+			}
+		}
+	}
 }

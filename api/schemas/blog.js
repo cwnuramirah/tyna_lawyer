@@ -67,5 +67,20 @@ export default {
 			of: [{ type: 'block' }],
 			validation: rule => rule.required(),
 		}
-	]
+	],
+	preview: {
+		select: {
+			title: 'title',
+			author: 'author.fullName',
+			date: 'date',
+			media: 'thumbnail',
+		},
+		prepare: ({title, author, date, media}) => {
+			return {
+				title: title,
+				subtitle: `${date} • ${author}`,
+				media: media,
+			}
+		}
+	}
 }
