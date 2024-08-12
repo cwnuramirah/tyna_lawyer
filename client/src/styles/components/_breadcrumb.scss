@@ -1,0 +1,25 @@
+@use '../pages/mixins';
+
+.breadcrumb {
+	padding: 0 12vw;
+	height: 3rem;
+	width: 100vw;
+	position: sticky;
+	top: var(--navbar-height);
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	background-color: rgba(var(--raw-white), 0.8);
+	backdrop-filter: blur(5px);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	gap: 0.3rem;
+
+	&>li:last-child>a {
+		opacity: 0.5;
+		cursor: default;
+	}
+
+	&>li:not(:last-child)>a {
+		@include mixins.underlineEffect;
+	}
+}

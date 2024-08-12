@@ -5,6 +5,7 @@ import BlockContent from '@sanity/block-content-to-react';
 import client from '../client';
 import { useImageUrlBuilder } from '../data/useImageUrlBuilder';
 import Skeleton from 'react-loading-skeleton';
+import Breadcrumb from '../components/Breadcrumb';
 
 const ExpertiseDetails = () => {
 	const { expertiseSlug } = useParams();
@@ -53,13 +54,14 @@ const ExpertiseDetails = () => {
 
 	return (
 		<main className='expertiseDetails'>
+			<Breadcrumb crumbs={
+				[
+					{link: '/expertise', name: 'Expertise'},
+					{link: `/${expertiseSlug}`, name: Object.keys(details).length !== 0 ? details["practice"] : ""}
+				]}/>
 			{
 				Object.keys(details).length !== 0 ?
 					<section className='expertiseDetails--header'>
-						<Link to={-1} className='expertiseDetails--header_backLink'>
-							<ArrowLeft />
-							<p>Home / Expertise /</p>
-						</Link>
 						<h1>{details["practice"]}</h1>
 						<div className='expertiseDetails--header_hod'>
 							<img src={details['headOfDepPotrait']} alt='Head Of department' className='expertiseDetails--header_hod_potrait' />
