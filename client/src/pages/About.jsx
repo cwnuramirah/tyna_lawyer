@@ -21,7 +21,6 @@ const About = () => {
 		const classname = section.title.replace(/\s/g, "-");
 		const gridTemplate = getGridTemplate(section.layout);
 		const sectionStyle = {
-			display: 'grid',
 			gridTemplateAreas: gridTemplate,
 			gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
 			gap: '2vw'
