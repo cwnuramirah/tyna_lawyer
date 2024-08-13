@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom"
 import AwardSection from "./AwardSection"
 import ExpertiseSection from "./ExpertiseSection"
 import TeamSection from "./TeamSection"
+import { ArrowRight } from "react-feather"
 
 const statsData = [
 	{
@@ -53,7 +55,10 @@ const Home = () => {
 							commercial spectrum both in Malaysia and throughout our region.
 						</p>
 
-						<a href='/'>Find Out More</a>
+						<Link to='/contact' className='hero--header_text_link'>
+							<ArrowRight />
+							<strong>Discuss With Us Today</strong>
+						</Link>
 					</div>
 				</div>
 				<p className='hero--label'><strong>Taufiq Yong</strong><br />
