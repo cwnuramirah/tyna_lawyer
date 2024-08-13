@@ -3,9 +3,12 @@ import { useExpertiseData } from '../data/useExpertiseData';
 import { Link } from 'react-router-dom';
 import 'react-loading-skeleton/dist/skeleton.css'
 import Skeleton from 'react-loading-skeleton'
+import ChangeDocumentTitle from '../data/changeDocumentTitle';
 
 const Expertise = () => {
 	const { expertiseData } = useExpertiseData();
+
+	ChangeDocumentTitle('Expertise');
 
 	const expertiseItemSkeletons = Array.apply(null, Array(3)).map((index) =>
 		<li key={index} className='expertise--list'>

@@ -3,11 +3,14 @@ import Skeleton from 'react-loading-skeleton'
 import { Link } from 'react-router-dom'
 import client from '../client';
 import { useImageUrlBuilder } from '../data/useImageUrlBuilder';
+import ChangeDocumentTitle from '../data/changeDocumentTitle';
 
 const Blog = () => {
 	const [imageLoading, setImageLoading] = useState(true);
 	const [postList, setPostList] = useState([]);
 	const { urlFor } = useImageUrlBuilder();
+
+	ChangeDocumentTitle('Blog, News, Announcements and Publications')
 
 	async function getPostList() {
 		const res = await client.fetch(

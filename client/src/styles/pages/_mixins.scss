@@ -8,6 +8,14 @@ $widthUnit: 8vw;
 	--section-h-padding-sm: 8vw;
 }
 
+@mixin navbarPadding() {
+	padding: 0 12vw;
+
+	@media screen and (max-width: bp.$screensm) {
+		padding: 0 8vw;
+	}
+}
+
 @mixin section() {
 	padding: 8vw 12vw;
 	border-top: 1px solid rgba(0, 0, 0, 0.2);

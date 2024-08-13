@@ -2,11 +2,14 @@ import React, { useEffect, useState } from 'react'
 import client from '../client';
 import { useImageUrlBuilder } from '../data/useImageUrlBuilder';
 import Skeleton from 'react-loading-skeleton';
+import ChangeDocumentTitle from '../data/changeDocumentTitle';
 
 const Team = () => {
 	const [teamData, setTeamData] = useState([]);
 	const { urlFor } = useImageUrlBuilder();
 	const [imageLoading, setImageLoading] = useState(true);
+
+	ChangeDocumentTitle('Team')
 
 	async function getTeamData() {
 		const res = await client.fetch(

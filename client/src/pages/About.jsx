@@ -1,10 +1,13 @@
 import React from 'react';
 import { useAboutContent } from '../data/useAboutContent';
 import { useImageUrlBuilder } from '../data/useImageUrlBuilder';
+import ChangeDocumentTitle from '../data/changeDocumentTitle';
 
 const About = () => {
 	const { content } = useAboutContent();
 	const { urlFor } = useImageUrlBuilder();
+
+	ChangeDocumentTitle('About Us')
 
 	function getGridTemplate(layout) {
 		let gridTemplate = layout.replace(/-/g, `""`)
@@ -18,7 +21,6 @@ const About = () => {
 		const classname = section.title.replace(/\s/g, "-");
 		const gridTemplate = getGridTemplate(section.layout);
 		const sectionStyle = {
-			display: 'grid',
 			gridTemplateAreas: gridTemplate,
 			gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
 			gap: '2vw'

@@ -7,7 +7,6 @@
 
 $white: var(--rgb-white);
 $black: var(--rgb-black);
-$grey: var(--rgb-grey);
 $navbar-height: var(--navbar-height);
 $navbar-padding: 0 12vw;
 
@@ -16,7 +15,7 @@ main {
 }
 
 .navbar {
-	padding: $navbar-padding;
+	@include mixins.navbarPadding;
 	height: $navbar-height;
 	position: fixed;
 	top: 0;
@@ -73,6 +72,12 @@ main {
 	#nav-btn {
 		display: block;
 		border: none;
+		background-color: none;
+		color: $black;
+
+		&>svg {
+			color: $black;
+		}
 	}
 
 	.nav-menu {

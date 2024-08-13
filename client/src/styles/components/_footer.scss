@@ -23,6 +23,7 @@ footer {
 .cta {
 	display: flex;
 	flex-direction: column;
+	margin: $padding 0;
 
 	&>h1 {
 		margin: 0;

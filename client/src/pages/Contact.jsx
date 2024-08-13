@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import ExpertiseSection from './ExpertiseSection';
+import ChangeDocumentTitle from '../data/changeDocumentTitle';
 
 const Contact = () => {
+
+	ChangeDocumentTitle('Contact')
 
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
