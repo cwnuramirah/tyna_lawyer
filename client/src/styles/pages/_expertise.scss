@@ -13,13 +13,8 @@
 		align-items: center;
 		width: 100%;
 
-		&_backLink {
-			display: flex;
-			flex-direction: row;
-			gap: 16px;
-			align-items: center;
-			margin-bottom: 1rem;
-			width: fit-content;
+		&>h1 {
+			text-align: center;
 		}
 
 		&_hod {
