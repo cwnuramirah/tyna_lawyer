@@ -29,7 +29,6 @@ const BlogPost = () => {
 
 	ChangeDocumentTitle(post['title'])
 
-
 	const postHeaderSkeleton =
 		<header className='blogpost--header'>
 			<h1 className='post_title'>

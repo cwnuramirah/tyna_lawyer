@@ -18,6 +18,8 @@ const Expertise = () => {
 
 	ChangeDocumentTitle('Expertise');
 
+	ChangeDocumentTitle('Expertise');
+
 	const expertiseItemSkeletons = Array.apply(null, Array(3)).map((index) =>
 		<li key={index} className='expertise--list'>
 			<h3 className='expertise--list_no'><Skeleton width={50} /></h3>
