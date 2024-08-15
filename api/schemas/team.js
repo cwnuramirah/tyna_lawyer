@@ -66,14 +66,16 @@ export default {
 	preview: {
 		select: {
 			title: 'fullName',
-			roleGroup: 'roleGroup',
+			practice0: 'practiceArea.0.practice',
+			practice1: 'practiceArea.1.practice',
 			media: 'potrait'
 		},
-		prepare: ({title, roleGroup, media}) => {
-			const role = roleGroup && ROLE_GROUP.flatMap(option => option.value === roleGroup ? [option.title] : [])
+		prepare: ({title, practice0, practice1, media}) => {
+			const mainPractice = practice0;
+			const hasMoreAreas = Boolean(practice1)
 			return {
 				title: title,
-				subtitle: roleGroup ? `${role}` : 'No role group selected',
+				subtitle: hasMoreAreas ? `${mainPractice}, ...` : mainPractice,
 				media: media,
 			}
 		}
