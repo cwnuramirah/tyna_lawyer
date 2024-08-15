@@ -1,41 +1,23 @@
-import React, { useEffect, useState } from 'react'
-import client from '../client';
-import { useImageUrlBuilder } from '../data/useImageUrlBuilder';
+import React, { useState } from 'react';
+import { useImageUrlBuilder } from '../hook/useImageUrlBuilder';
 import Skeleton from 'react-loading-skeleton';
-import ChangeDocumentTitle from '../data/changeDocumentTitle';
+import ChangeDocumentTitle from '../hook/changeDocumentTitle';
+import useData from '../hook/useData';
 
 const Team = () => {
-	const [teamData, setTeamData] = useState([]);
+	const teamData = useData(
+		`
+			*[_type == 'team'] {
+				fullName,
+				roleGroup,
+				'potrait': potrait.asset._ref,
+			}
+		`
+	, [])
 	const { urlFor } = useImageUrlBuilder();
 	const [imageLoading, setImageLoading] = useState(true);
 
 	ChangeDocumentTitle('Team')
-
-	async function getTeamData() {
-		const res = await client.fetch(
-			`
-				*[_type == 'team'] {
-					fullName,
-					roleGroup,
-					'potrait': potrait.asset._ref,
-				}
-			`
-		)
-			.then((data) => {
-				data.map((member) => {
-					member.potrait = urlFor(member.potrait);
-					return member;
-				})
-				setTeamData(data);
-			})
-			.catch((err) => console.log(err))
-
-		return res;
-	}
-
-	useEffect(() => {
-		getTeamData();
-	}, [])
 
 	const teamMemberSkeletons = Array.apply(null, Array(5)).map((index) =>
 		<li key={index} className='team--list'>
@@ -60,7 +42,7 @@ const Team = () => {
 							teamData.map((member, index) => (
 								<li key={index} className='team--list'>
 									<div className='team--list_image' style={{ display: imageLoading ? "none" : "flex" }}>
-										<img src={member.potrait} alt={member.fullName}
+										<img src={urlFor(member.potrait)} alt={member.fullName}
 											onLoad={() => setImageLoading(false)} />
 									</div>
 									<Skeleton className={'team--list_image'} style={{ display: imageLoading ? "flex" : "none" }} />

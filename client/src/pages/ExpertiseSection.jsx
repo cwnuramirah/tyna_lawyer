@@ -1,10 +1,17 @@
 import React from 'react';
-import { useExpertiseData } from '../data/useExpertiseData';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'react-feather'
+import useData from '../hook/useData';
 
 const ExpertiseSection = () => {
-	const { expertiseData } = useExpertiseData();
+	const expertiseData = useData(
+		`
+			*[_type == 'expertise']{
+				practice,
+				'slug': slug.current,
+			}
+		`
+	, [])
 
 	return (
 		<section className='practicearea'>
