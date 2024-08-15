@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { useImageUrlBuilder } from '../hook/useImageUrlBuilder';
 import ChangeDocumentTitle from '../hook/changeDocumentTitle';
 import useData from '../hook/useData';
@@ -17,7 +16,8 @@ const About = () => {
 				}
 			}[0]
 		`
-		, [])
+		, {})
+
 	const { urlFor } = useImageUrlBuilder();
 
 	ChangeDocumentTitle('About Us')
@@ -30,7 +30,7 @@ const About = () => {
 		return gridTemplate;
 	}
 
-	const about = content.map((section, index) => {
+	const about = Object.keys(content).length !== 0 && content['content'].map((section, index) => {
 		const classname = section.title.replace(/\s/g, "-");
 		const gridTemplate = getGridTemplate(section.layout);
 		const sectionStyle = {
@@ -45,7 +45,7 @@ const About = () => {
 			{
 				section.image !== null &&
 				<div className='section_image'>
-					<img src={urlFor(section.image)} alt={'Taufiq Yong & Associates | ' + section.title} />
+					<img src={urlFor(section.image)} alt={'Taufiq Yong & Associates | ' + section.title}/>
 				</div>
 			}
 		</section>
@@ -54,9 +54,10 @@ const About = () => {
 	return (
 		<main className='about'>
 			{
-				content.length !== 0 ?
+				Object.keys(content).length !== 0 ?
 					about
-					: <section>
+					:
+					<section>
 						<p>Loading our story...</p>
 					</section>
 			}
