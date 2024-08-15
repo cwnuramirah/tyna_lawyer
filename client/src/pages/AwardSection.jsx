@@ -1,5 +1,5 @@
 import React from 'react'
-import { useImageUrlBuilder } from '../data/useImageUrlBuilder';
+import { useImageUrlBuilder } from '../hook/useImageUrlBuilder';
 import useData from '../hook/useData';
 
 const AwardSection = () => {

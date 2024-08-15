@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import ExpertiseSection from './ExpertiseSection';
-import ChangeDocumentTitle from '../data/changeDocumentTitle';
+import ChangeDocumentTitle from '../hook/changeDocumentTitle';
 
 const Contact = () => {
 

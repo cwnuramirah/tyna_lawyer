@@ -1,10 +1,10 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import BlockContent from '@sanity/block-content-to-react';
-import { useImageUrlBuilder } from '../data/useImageUrlBuilder';
 import Skeleton from 'react-loading-skeleton';
 import Breadcrumb from '../components/Breadcrumb';
-import ChangeDocumentTitle from '../data/changeDocumentTitle';
+import { useImageUrlBuilder } from '../hook/useImageUrlBuilder';
+import ChangeDocumentTitle from '../hook/changeDocumentTitle';
 import useData from '../hook/useData';
 
 const ExpertiseDetails = () => {

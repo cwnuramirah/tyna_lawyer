@@ -10,7 +10,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Expertise from './pages/Expertise';
 import ExpertiseDetails from './pages/ExpertiseDetails';
-import { useSplashScreen } from './data/useSplashScreen';
+import { useSplashScreen } from './hook/useSplashScreen';
 import About from './pages/About';
 import Team from './pages/Team';
 import Blog from './pages/Blog';
