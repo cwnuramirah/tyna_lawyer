@@ -2,12 +2,11 @@ import client from '../client';
 import imageUrlBuilder from '@sanity/image-url'
 
 export const useImageUrlBuilder = () => {
-		// Get a pre-configured url-builder from your sanity client
+		// A pre-configured url-builder from sanity client
 		const builder = imageUrlBuilder(client)
 
-		// Then we like to make a simple function like this that gives the
-		// builder an image and returns the builder for you to specify additional
-		// parameters:
+		// Since I can't call hook directly in image callback,
+		// specifiying this function works.
 		function urlFor(source) {
 			return builder.image(source).url()
 		}

@@ -1,10 +1,23 @@
 import React from 'react';
-import { useAboutContent } from '../data/useAboutContent';
-import { useImageUrlBuilder } from '../data/useImageUrlBuilder';
-import ChangeDocumentTitle from '../data/changeDocumentTitle';
+
+import { useImageUrlBuilder } from '../hook/useImageUrlBuilder';
+import ChangeDocumentTitle from '../hook/changeDocumentTitle';
+import useData from '../hook/useData';
 
 const About = () => {
-	const { content } = useAboutContent();
+	const content = useData(
+		`
+			*[_type == 'pageBuilder'] {
+				'content': content[]->{
+					title, 
+					layout, 
+					heading,
+					text,
+					image,
+				}
+			}[0]
+		`
+		, [])
 	const { urlFor } = useImageUrlBuilder();
 
 	ChangeDocumentTitle('About Us')
@@ -27,8 +40,8 @@ const About = () => {
 		}
 
 		return <section key={index} className={classname} style={sectionStyle}>
-			<h2 style={{alignSelf: section.image !== null ? 'end' : 'start'}}>{section.heading}</h2>
-			<p style={{alignSelf: 'start'}}>{section.text}</p>
+			<h2 style={{ alignSelf: section.image !== null ? 'end' : 'start' }}>{section.heading}</h2>
+			<p style={{ alignSelf: 'start' }}>{section.text}</p>
 			{
 				section.image !== null &&
 				<div className='section_image'>

@@ -1,49 +1,33 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import client from '../client';
+import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import SanityBlockContent from '@sanity/block-content-to-react';
-import { useImageUrlBuilder } from '../data/useImageUrlBuilder';
 import Skeleton from 'react-loading-skeleton';
-import { Twitter, Facebook, Link} from 'react-feather';
+import { Twitter, Facebook, Link } from 'react-feather';
 import Breadcrumb from '../components/Breadcrumb';
-import ChangeDocumentTitle from '../data/changeDocumentTitle';
+import { useImageUrlBuilder } from '../hook/useImageUrlBuilder';
+import ChangeDocumentTitle from '../hook/changeDocumentTitle';
+import useData from '../hook/useData';
 
 const BlogPost = () => {
-	const [post, setPost] = useState({});
 	const { postSlug } = useParams();
+	const post = useData(
+		`
+			*[_type == 'blog' && slug.current == '${postSlug}'] {
+				title,
+				'slug': slug.current,
+				tag,
+				category,
+				date,
+				'author': author->fullName,
+				'thumbnail': thumbnail.asset._ref,
+				content,
+			}[0]
+		`
+		, {})
 	const { urlFor } = useImageUrlBuilder();
 	const [imageLoading, setImageLoading] = useState(true);
 
 	ChangeDocumentTitle(post['title'])
-
-	async function getPost() {
-
-		const res = await client.fetch(
-			`
-				*[_type == 'blog' && slug.current == '${postSlug}'] {
-					title,
-					'slug': slug.current,
-					tag,
-					category,
-					date,
-					'author': author->fullName,
-					'thumbnail': thumbnail.asset._ref,
-					content,
-				}[0]
-			`
-		)
-			.then((data) => {
-				data.thumbnail = urlFor(data.thumbnail);
-				setPost(data);
-			})
-			.catch((err) => console.log(err))
-
-		return res;
-	}
-
-	useEffect(() => {
-		getPost();
-	}, []);
 
 	const postHeaderSkeleton =
 		<header className='blogpost--header'>
@@ -64,22 +48,22 @@ const BlogPost = () => {
 		</section>
 
 	const sharePost =
-	<section className='blogpost--share'>
-		Share this post: 
-		<ul>
-			<li><Twitter /></li>
-			<li><Facebook /></li>
-			<li><Link /></li>
-		</ul>
-	</section>
+		<section className='blogpost--share'>
+			Share this post:
+			<ul>
+				<li><Twitter /></li>
+				<li><Facebook /></li>
+				<li><Link /></li>
+			</ul>
+		</section>
 
 	return (
 		<main className='blogpost'>
 			<Breadcrumb crumbs={
 				[
-					{link: '/blog', name: 'Blog'},
-					{link: `/${postSlug}`, name: Object.keys(post).length !== 0 ? post["title"] : ""}
-				]}/>
+					{ link: '/blog', name: 'Blog' },
+					{ link: `/${postSlug}`, name: Object.keys(post).length !== 0 ? post["title"] : "" }
+				]} />
 			{
 				Object.keys(post).length !== 0 ?
 					<>
@@ -89,10 +73,10 @@ const BlogPost = () => {
 						</header>
 						{sharePost}
 						<section className='blogpost--body'>
-							<SanityBlockContent blocks={post['content']}/>
+							<SanityBlockContent blocks={post['content']} />
 						</section>
 						<section className='blogpost--cover' style={{ display: imageLoading ? "none" : "flex" }}>
-							<img src={post['thumbnail']} alt={post['title']}
+							<img src={urlFor(post['thumbnail'])} alt={post['title']}
 								onLoad={() => setImageLoading(false)} />
 						</section>
 						<Skeleton className='blogpost--cover' style={{ display: imageLoading ? "flex" : "none", width: '50%' }} />

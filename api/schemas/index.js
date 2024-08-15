@@ -3,8 +3,8 @@ import team from "./team";
 import blog from "./blog";
 import award from "./award";
 import office from "./office";
-import section from "./section";
-import aboutPageBuilder from "./AboutPageBuilder.";
+import section from "./about/section";
+import pageBuilder from "./about/pageBuilder";
 
 export const schemaTypes = [
 	expertise,
@@ -13,5 +13,5 @@ export const schemaTypes = [
 	award,
 	office,
 	section,
-	aboutPageBuilder
+	pageBuilder
 ]

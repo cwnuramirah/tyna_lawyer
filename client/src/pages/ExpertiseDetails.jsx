@@ -1,45 +1,30 @@
-import React, { useEffect, useState } from 'react'
-import { ArrowLeft } from 'react-feather'
-import { Link, useParams } from 'react-router-dom'
+import React from 'react'
+import { useParams } from 'react-router-dom'
 import BlockContent from '@sanity/block-content-to-react';
-import client from '../client';
-import { useImageUrlBuilder } from '../data/useImageUrlBuilder';
 import Skeleton from 'react-loading-skeleton';
 import Breadcrumb from '../components/Breadcrumb';
-import ChangeDocumentTitle from '../data/changeDocumentTitle';
+import { useImageUrlBuilder } from '../hook/useImageUrlBuilder';
+import ChangeDocumentTitle from '../hook/changeDocumentTitle';
+import useData from '../hook/useData';
 
 const ExpertiseDetails = () => {
 	const { expertiseSlug } = useParams();
 
-	const [details, setDetails] = useState({});
-	const { urlFor } = useImageUrlBuilder();
-
-	ChangeDocumentTitle(details['practice'])
-
-	async function getExpertiseData() {
-		const res = await client.fetch(
-			`*[_type == 'expertise' && slug.current == '${expertiseSlug}']{
+	const details = useData(
+		`
+			*[_type == 'expertise' && slug.current == '${expertiseSlug}']{
 				practice,
 				brief,
 				'headOfDepName': head->fullName,
 				'headOfDepPotrait': head->potrait.asset._ref,
 				content
-			}
-			[0]`
-		)
-			.then((data) => {
-				data["headOfDepPotrait"] = urlFor(data["headOfDepPotrait"]);
-				setDetails(data);
-			})
-			.catch((err) => console.log(err))
+			}[0]
+		`
+	, {})
 
-		return res;
-	}
+	const { urlFor } = useImageUrlBuilder();
 
-	useEffect(() => {
-		getExpertiseData();
-		console.log(details)
-	}, [])
+	ChangeDocumentTitle(details['practice'])
 
 	const headerSkeleton =
 		<section className='expertiseDetails--header'>
@@ -67,7 +52,7 @@ const ExpertiseDetails = () => {
 					<section className='expertiseDetails--header'>
 						<h1>{details["practice"]}</h1>
 						<div className='expertiseDetails--header_hod'>
-							<img src={details['headOfDepPotrait']} alt='Head Of department' className='expertiseDetails--header_hod_potrait' />
+							<img src={urlFor(details['headOfDepPotrait'])} alt='Head Of department' className='expertiseDetails--header_hod_potrait' />
 							<div>
 								<p className='expertiseDetails--header_hod_name'><strong>{details['headOfDepName']}</strong></p>
 								<p>Head of Department</p>

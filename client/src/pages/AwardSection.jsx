@@ -1,10 +1,20 @@
 import React from 'react'
-import { useAwardData } from '../data/useAwardData'
-// import { useImageUrlBuilder } from '../data/useImageUrlBuilder';
+import { useImageUrlBuilder } from '../hook/useImageUrlBuilder';
+import useData from '../hook/useData';
 
 const AwardSection = () => {
-	const { awardData } = useAwardData();
-	// const { urlFor } = useImageUrlBuilder();
+	const awardData = useData(
+		`
+			*[_type == 'award']{
+				_id,
+				awardName,
+				awardDate,
+				awardDesc,
+				'awardImg': awardImg.asset._ref,
+			}
+		`
+		, [])
+	const { urlFor } = useImageUrlBuilder();
 
 	return (
 		<section className='awards'>
@@ -12,7 +22,7 @@ const AwardSection = () => {
 				{
 					awardData.map((award) => (
 						<li key={award._id} className='awards--list'>
-							<img src={award.awardImg} alt={award.awardName} />
+							<img src={urlFor(award.awardImg)} alt={award.awardName} />
 						</li>
 					))
 				}

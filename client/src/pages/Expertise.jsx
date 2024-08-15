@@ -1,12 +1,22 @@
 import React from 'react'
-import { useExpertiseData } from '../data/useExpertiseData';
 import { Link } from 'react-router-dom';
 import 'react-loading-skeleton/dist/skeleton.css'
 import Skeleton from 'react-loading-skeleton'
-import ChangeDocumentTitle from '../data/changeDocumentTitle';
+import ChangeDocumentTitle from '../hook/changeDocumentTitle';
+import useData from '../hook/useData';
 
 const Expertise = () => {
-	const { expertiseData } = useExpertiseData();
+	const expertiseData = useData(
+		`*[_type == 'expertise']{
+				practice,
+				'slug': slug.current,
+				subareas,
+				brief,
+				_id,
+			}`
+	, [])
+
+	ChangeDocumentTitle('Expertise');
 
 	ChangeDocumentTitle('Expertise');
 

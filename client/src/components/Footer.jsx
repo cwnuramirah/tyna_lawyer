@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { ArrowRight, CornerRightUp } from 'react-feather'
 import { Link, useLocation } from 'react-router-dom'
-import client from '../client'
+import useData from '../hook/useData'
 
 
 /*
@@ -37,7 +37,16 @@ const officeData = [
 
 const Footer = () => {
 	const location = useLocation();
-	const [office, setOffice] = useState([])
+	const office = useData(
+		`
+			*[ _type == 'office'] {
+				region,
+				phone,
+				email,
+				address,
+			}
+		`
+	, [])
 	const [region, setRegion] = useState('Kuala Lumpur')
 	const getEachRegion = office.length !== 0 ? office.filter((item) => item.region === region)[0] : officeData.filter((item) => item.region === region)[0]
 	const onSwitch = (region) => setRegion(region)
@@ -45,25 +54,6 @@ const Footer = () => {
 	const email = getEachRegion.email;
 	const phone = getEachRegion.phone;
 	const address = getEachRegion.address;
-
-	async function getOffice() {
-		const res = await client.fetch(`
-			*[ _type == 'office'] {
-				region,
-				phone,
-				email,
-				address,
-			}
-		`)
-			.then((data) => setOffice(data))
-			.catch((err) => console.log(err))
-
-		return res;
-	}
-
-	useEffect(() => {
-		getOffice();
-	}, [])
 
 	const findUs = () => {
 		if (office.length !== 0) {
