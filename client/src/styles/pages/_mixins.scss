@@ -30,8 +30,8 @@ $widthUnit: 8vw;
 }
 
 @mixin content() {
-	padding-left: 20vw;
-	padding-right: 20vw;
+	padding-left: 18vw;
+	padding-right: 18vw;
 
 	&>div {
 
@@ -83,12 +83,10 @@ $widthUnit: 8vw;
 }
 
 @mixin contentImage() {
-	margin-left: 20vw;
-	margin-right: 20vw;
+	margin: 2vw 18vw;
 
 	@media screen and (max-width: bp.$screenlg) {
-		margin-left: 12vw;
-		margin-right: 12vw;
+		margin: 2vw 12vw;
 	}
 
 	@media screen and (max-width: bp.$screensm) {

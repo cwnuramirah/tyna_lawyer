@@ -471,7 +471,6 @@ footer {
 .breadcrumb {
   padding: 0 12vw;
   height: 3rem;
-  width: 100vw;
   position: sticky;
   top: var(--navbar-height);
   display: flex;
@@ -955,8 +954,8 @@ footer {
 .expertiseDetails--body {
   padding: 8vw 12vw;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
-  padding-left: 20vw;
-  padding-right: 20vw;
+  padding-left: 18vw;
+  padding-right: 18vw;
 }
 @media screen and (min-width: 1920px) {
   .expertiseDetails--body {
@@ -1235,12 +1234,14 @@ footer {
 .blogpost {
   display: flex;
   flex-direction: column;
+  width: 100vw;
+  max-width: 100%;
 }
 .blogpost--header {
   padding: 8vw 12vw;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
-  padding-left: 20vw;
-  padding-right: 20vw;
+  padding-left: 18vw;
+  padding-right: 18vw;
   background-color: var(--rgb-blue);
   color: var(--rgb-white);
   display: flex;
@@ -1299,8 +1300,8 @@ footer {
 .blogpost--body {
   padding: 8vw 12vw;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
-  padding-left: 20vw;
-  padding-right: 20vw;
+  padding-left: 18vw;
+  padding-right: 18vw;
   border-top: none;
 }
 @media screen and (min-width: 1920px) {
@@ -1356,8 +1357,7 @@ footer {
 .blogpost--share {
   padding: 8vw 12vw;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
-  margin-left: 20vw;
-  margin-right: 20vw;
+  margin: 2vw 18vw;
   display: flex;
   flex-direction: row;
   align-self: flex-end;
@@ -1383,8 +1383,7 @@ footer {
 }
 @media screen and (max-width: 992px) {
   .blogpost--share {
-    margin-left: 12vw;
-    margin-right: 12vw;
+    margin: 2vw 12vw;
   }
 }
 @media screen and (max-width: 576px) {
@@ -1402,8 +1401,7 @@ footer {
   color: var(--rgb-black);
 }
 .blogpost--cover {
-  margin-left: 20vw;
-  margin-right: 20vw;
+  margin: 2vw 18vw;
   border-top: none;
   aspect-ratio: 16/9;
   display: flex;
@@ -1412,8 +1410,7 @@ footer {
 }
 @media screen and (max-width: 992px) {
   .blogpost--cover {
-    margin-left: 12vw;
-    margin-right: 12vw;
+    margin: 2vw 12vw;
   }
 }
 @media screen and (max-width: 576px) {
@@ -1449,8 +1446,8 @@ footer {
 .contact > form {
   padding: 8vw 12vw;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
-  padding-left: 20vw;
-  padding-right: 20vw;
+  padding-left: 18vw;
+  padding-right: 18vw;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;

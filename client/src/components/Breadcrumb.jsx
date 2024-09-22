@@ -12,7 +12,7 @@ const Breadcrumb = ({ crumbs }) => {
 			<li className='text--xs'><NavLink to="/">Home</NavLink></li>
 			{
 				crumbs.map((path, i) =>
-					<li className='text--xs'>
+					<li key={i} className='text--xs'>
 						/ <NavLink to={path.link} onClick={handleClick(i)}> {path.name}</NavLink>
 					</li>)
 			}

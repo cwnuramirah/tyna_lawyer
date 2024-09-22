@@ -24,8 +24,8 @@ const Blog = () => {
 
 	ChangeDocumentTitle('Blog, News, Announcements and Publications')
 
-	const postsSkeleton = Array.apply(null, Array(5)).map((index) =>
-		<li className='post' key={index}>
+	const postsSkeleton = Array.apply(null, Array(5)).map((_, index) =>
+		<li className='post' key={`postsSkeleton-${index}`} >
 			<Skeleton className='post_tags text--xs' />
 			<Skeleton className='post_image' />
 			<h4 className='post_title'><Skeleton count={2} /></h4>
@@ -42,8 +42,9 @@ const Blog = () => {
 				<ul className='blog--posts'>
 					{
 						postList.length !== 0 ?
-							postList.map((post, index) =>
-								<li className='post' key={index}>
+							postList.sort((a, b) => new Date(b.date) - new Date(a.date))
+							.map((post, index) =>
+								<li className='post' key={`post-${index}`} >
 									<p className='post_tags text--xs'>{post.tag}</p>
 									<Link to={"/blog/" + post.slug}>
 										<div className='post_image' style={{ display: imageLoading ? "none" : "flex" }}>
