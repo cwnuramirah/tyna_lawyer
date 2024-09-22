@@ -36,7 +36,7 @@ const Navbar = () => {
 					<li><NavLink to="/blog" className={activeLink} onClick={onClickNavList}>Articles</NavLink></li>
 					<li><NavLink to="/contact" className='btn btn-primary' onClick={onClickNavList}>Contact Us</NavLink></li>
 					{expanded && <li>
-						<img src='/assets/ty-signature-trans.png' alt='Taufiq Yong & Associates logo' style={{opacity: '0.1'}}/>
+						<img id='expandedLogo' src='/assets/ty-signature-trans.png' alt='Taufiq Yong & Associates logo' style={{opacity: '0.1'}}/>
 					</li>}
 				</ul>
 			</nav>

@@ -4,6 +4,8 @@
 .blogpost {
 	display: flex;
 	flex-direction: column;
+	width: 100vw;
+	max-width: 100%;
 
 	&--header {
 		@include mixins.section;

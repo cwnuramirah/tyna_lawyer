@@ -41,8 +41,8 @@ const Team = () => {
 		</li>
 	}
 
-	const teamMemberSkeletons = Array.apply(null, Array(3)).map((index) =>
-		<li key={index} className='team--list'>
+	const teamMemberSkeletons = Array.apply(null, Array(3)).map((_, index) =>
+		<li key={`teamSkeleton-${index}`}  className='team--list'>
 			<Skeleton className='team--list_image' />
 			<div className='team--list_detail'>
 				<Skeleton width={100} />

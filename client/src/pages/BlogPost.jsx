@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import SanityBlockContent from '@sanity/block-content-to-react';
 import Skeleton from 'react-loading-skeleton';
-import { Twitter, Facebook, Link } from 'react-feather';
+// import { Twitter, Facebook, Link } from 'react-feather';
 import Breadcrumb from '../components/Breadcrumb';
 import { useImageUrlBuilder } from '../hook/useImageUrlBuilder';
 import ChangeDocumentTitle from '../hook/changeDocumentTitle';
@@ -47,15 +47,15 @@ const BlogPost = () => {
 			<Skeleton style={{ width: '50%' }} />
 		</section>
 
-	const sharePost =
-		<section className='blogpost--share'>
-			Share this post:
-			<ul>
-				<li><Twitter /></li>
-				<li><Facebook /></li>
-				<li><Link /></li>
-			</ul>
-		</section>
+	// const sharePost =
+	// 	<section className='blogpost--share'>
+	// 		Share this post:
+	// 		<ul>
+	// 			<li><Twitter /></li>
+	// 			<li><Facebook /></li>
+	// 			<li><Link /></li>
+	// 		</ul>
+	// 	</section>
 
 	return (
 		<main className='blogpost'>
@@ -71,7 +71,7 @@ const BlogPost = () => {
 							<h1 className='post_title'>{post['title']}</h1>
 							<p className='post_detail'>by {post['author']} / {post['date']}</p>
 						</header>
-						{sharePost}
+						{/* {sharePost} */}
 						<section className='blogpost--body'>
 							<SanityBlockContent blocks={post['content']} />
 						</section>
@@ -79,8 +79,8 @@ const BlogPost = () => {
 							<img src={urlFor(post['thumbnail'])} alt={post['title']}
 								onLoad={() => setImageLoading(false)} />
 						</section>
-						<Skeleton className='blogpost--cover' style={{ display: imageLoading ? "flex" : "none", width: '50%' }} />
-						{sharePost}
+						{/* <Skeleton className='blogpost--cover' style={{ display: imageLoading ? "flex" : "none", width: '50vw' }} /> */}
+						{/* {sharePost} */}
 					</>
 					:
 					<>

@@ -14,14 +14,14 @@ const Expertise = () => {
 				brief,
 				_id,
 			}`
-	, [])
+		, [])
 
 	ChangeDocumentTitle('Expertise');
 
 	ChangeDocumentTitle('Expertise');
 
-	const expertiseItemSkeletons = Array.apply(null, Array(3)).map((index) =>
-		<li key={index} className='expertise--list'>
+	const expertiseItemSkeletons = Array.from({ length: 3}).map((_,index) => {
+		return <li key={`expertiseSkeleton-${index}`} className='expertise--list'>
 			<h3 className='expertise--list_no'><Skeleton width={50} /></h3>
 			<h3 className='expertise--list_practice'><Skeleton /></h3>
 			<ul className='expertise--list_tags'>
@@ -46,6 +46,7 @@ const Expertise = () => {
 				<div className='btn'><Skeleton width={150} height={50} /></div>
 			</div>
 		</li>
+	}
 	)
 
 	return (
@@ -56,13 +57,13 @@ const Expertise = () => {
 					{
 						expertiseData.length !== 0 ?
 							expertiseData.map((expertise, index) => (
-								<li key={index} className='expertise--list'>
+								<li key={`expertise-${index}`} className='expertise--list'>
 									<h2 className='expertise--list_no'>{index + 1}.</h2>
 									<h2 className='expertise--list_practice'>{expertise.practice}</h2>
 									<ul className='expertise--list_tags'>
 										{
 											expertise.subareas.map((tags, index) => (
-												<li key={index}>
+												<li key={`subareas-${index}`} >
 													<a href='/#'>{tags}</a>
 												</li>
 											))

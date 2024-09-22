@@ -32,6 +32,12 @@ main {
 	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
+#expandedLogo {
+	@media screen and (min-width: bp.$screenmd) {
+		display: none;
+	}
+}
+
 .nav-list,
 .nav-list-expanded {
 	display: flex;
